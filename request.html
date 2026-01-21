@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>طلب خدمة من ستور أبوالدهب</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
@@ -18,11 +18,25 @@
           <option value="بداية سريعة">بداية سريعة</option>
           <option value="هوية محترفة">هوية محترفة</option>
           <option value="خدمات متكاملة">خدمات متكاملة</option>
-          <option value="كتالوج شامل">كتالوج شامل</option>
-          <option value="متجر ذكي">متجر ذكي</option>
-          <option value="نظام حجوزات">نظام حجوزات</option>
         </select>
       </label><br><br>
 
       <label>الاسم:
-        <input type="text
+        <input type="text" id="name" placeholder="اكتب اسمك هنا" required />
+      </label><br><br>
+
+      <label>الدولة:
+        <input type="text" id="country" placeholder="اكتب دولتك هنا" required />
+      </label><br><br>
+
+      <label>وسيلة التواصل:
+        <input type="text" id="contact" placeholder="واتساب أو بريد إلكتروني" required />
+      </label><br><br>
+
+      <button type="submit" class="btn">إرسال الطلب</button>
+    </form>
+  </section>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
