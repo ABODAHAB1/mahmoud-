@@ -1,42 +1,26 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>طلب خدمة من ستور أبوالدهب</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>طلب خدمة</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <h1>📝 طلب خدمة من ستور أبوالدهب</h1>
+    <h1>📩 نموذج طلب خدمة</h1>
   </header>
 
-  <section class="form-section" style="padding: 2rem; text-align: center;">
-    <form id="requestForm" style="max-width: 400px; margin: auto;">
-      <label>اختر العرض:
-        <select id="offer">
-          <option value="بداية سريعة">بداية سريعة</option>
-          <option value="هوية محترفة">هوية محترفة</option>
-          <option value="خدمات متكاملة">خدمات متكاملة</option>
-        </select>
-      </label><br><br>
-
-      <label>الاسم:
-        <input type="text" id="name" placeholder="اكتب اسمك هنا" required />
-      </label><br><br>
-
-      <label>الدولة:
-        <input type="text" id="country" placeholder="اكتب دولتك هنا" required />
-      </label><br><br>
-
-      <label>وسيلة التواصل:
-        <input type="text" id="contact" placeholder="واتساب أو بريد إلكتروني" required />
-      </label><br><br>
-
-      <button type="submit" class="btn">إرسال الطلب</button>
-    </form>
+  <section class="form">
+    <p><strong>الخطة المختارة:</strong> <span id="planName"></span></p>
+    <input type="text" id="name" placeholder="اكتب اسمك">
+    <input type="text" id="contact" placeholder="رقم واتساب أو يوزر تلجرام">
+    <button onclick="sendRequest()">إرسال</button>
   </section>
 
-  <script src="script.js" defer></script>
+  <script src="script.js"></script>
+  <script>
+    document.getElementById("planName").innerText = localStorage.getItem("selectedPlan");
+  </script>
 </body>
 </html>
