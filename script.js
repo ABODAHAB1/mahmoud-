@@ -1,30 +1,28 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("requestForm");
-  if (!form) return;
+function openRequest(planName) {
+  localStorage.setItem("selectedPlan", planName);
+  window.location.href = "request.html";
+}
 
-  const button = form.querySelector("button");
+function sendRequest() {
+  const name = document.getElementById("name").value;
+  const contact = document.getElementById("contact").value;
+  const plan = localStorage.getItem("selectedPlan");
 
-  // قراءة العرض من الرابط (query string)
-  const urlParams = new URLSearchParams(window.location.search);
-  const offerParam = urlParams.get("offer");
-  if (offerParam) {
-    const offerSelect = document.getElementById("offer");
-    if (offerSelect) offerSelect.value = offerParam;
+  if (!name || !contact) {
+    alert("من فضلك املأ كل البيانات");
+    return;
   }
 
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
+  const message = `لقد وصلتك مهمة جديدة ✅\n\nالخطة: ${plan}\nالاسم: ${name}\nالتواصل: ${contact}`;
 
-    const offer = document.getElementById("offer").value.trim();
-    const name = document.getElementById("name").value.trim();
-    const country = document.getElementById("country").value.trim();
-    const contact = document.getElementById("contact").value.trim();
+  // هنا لازم تضيف بيانات البوت بتاعك
+  const telegramUrl = `https://api.telegram.org/bot<YOUR_BOT_TOKEN>/sendMessage?chat_id=<YOUR_CHAT_ID>&text=${encodeURIComponent(message)}`;
 
-    if (!name || !country || !contact) {
-      button.classList.add("shake");
-      setTimeout(() => button.classList.remove("shake"), 500);
-      showPopup("⚠️ من فضلك املأ جميع البيانات قبل الإرسال", "error");
-      return;
-    }
-
-    const message = `طلب جديد من ستور أبوالدهب:\nالعرض: ${offer}\nالاسم: ${name}\nالدولة: ${country}\nالتواصل: ${
+  fetch(telegramUrl)
+    .then(() => {
+      alert("تم إرسال الطلب بنجاح 🎉");
+    })
+    .catch(() => {
+      alert("حصل خطأ أثناء الإرسال");
+    });
+}
