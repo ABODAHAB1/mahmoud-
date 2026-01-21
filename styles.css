@@ -1,0 +1,91 @@
+body {
+  font-family: 'Cairo', sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+  direction: rtl;
+  color: #222;
+}
+
+/* رأس الصفحة */
+header {
+  background: linear-gradient(to left, #004080, #0077b6);
+  color: #fff;
+  text-align: center;
+  padding: 2rem 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.2rem;
+}
+
+header p {
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
+}
+
+/* قسم العروض */
+.offers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+/* الكروت */
+.card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h2 {
+  color: #004080;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.2rem 0;
+}
+
+.card ul li {
+  margin-bottom: 0.5rem;
+  padding-right: 1rem;
+  position: relative;
+}
+
+.card ul li::before {
+  content: "✔";
+  position: absolute;
+  right: 0;
+  color: #0077b6;
+}
+
+/* زر الطلب */
+.btn {
+  display: inline-block;
+  background-color: #0077b6;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #ffb703;
+  color: #000;
+}
