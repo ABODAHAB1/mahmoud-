@@ -89,3 +89,33 @@ header p {
   background-color: #ffb703;
   color: #000;
 }
+
+/* Popup */
+.popup {
+  position: fixed;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0077aa;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  opacity: 0;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  z-index: 9999;
+}
+
+.popup.show {
+  bottom: 30px;
+  opacity: 1;
+}
+
+.popup.success {
+  background: #28a745;
+}
+
+.popup.error {
+  background: #dc3545;
+}
