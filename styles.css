@@ -1,64 +1,144 @@
-:root{
-  --bg:#0b1220;
-  --card:#0f1724;
-  --accent:#6ee7b7;
-  --muted:#bfc8d6;
-  --glass: rgba(255,255,255,0.04);
+:root {
+    --primary-color: #2563eb;
+    --accent-color: #7c3aed;
+    --bg-color: #f8fafc;
+    --text-color: #1e293b;
+    --white: #ffffff;
 }
 
-*{box-sizing:border-box;font-family: "Segoe UI", Tahoma, Arial, sans-serif}
-html,body{height:100%;margin:0;background:linear-gradient(180deg,#071226 0%, #071a2a 100%);color:var(--muted);direction:rtl}
-.container{max-width:1100px;margin:0 auto;padding:24px}
-
-/* نجوم متحركة */
-.stars, .twinkling{
-  position:fixed;left:0;right:0;top:0;bottom:0;z-index:-2;
+body {
+    font-family: 'Cairo', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
 }
-.stars{
-  background:transparent url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"></svg>') repeat;
-  background-image: radial-gradient(#ffffff 1px, transparent 1px);
-  background-size: 3px 3px;
-  opacity:0.06;
+
+header {
+    text-align: center;
+    padding: 50px 20px;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: white;
 }
-.twinkling{
-  background: linear-gradient(transparent, rgba(255,255,255,0.02));
-  animation: twinkle 8s linear infinite;
-  opacity:0.04;
+
+.container {
+    max-width: 1200px;
+    margin: -40px auto 40px;
+    padding: 0 20px;
 }
-@keyframes twinkle{0%{transform:translateY(0)}50%{transform:translateY(2px)}100%{transform:translateY(0)}}
 
-/* رأس الصفحة */
-.site-header{padding:40px 0;text-align:center}
-.site-header h1{margin:0;font-size:28px;color:var(--accent)}
-.subtitle{color:var(--muted);margin-top:8px}
-
-/* بطاقات الباقات */
-.packages{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:18px}
-.card{
-  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  border:1px solid rgba(255,255,255,0.04);
-  padding:18px;border-radius:12px;backdrop-filter: blur(6px);
-  box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
 }
-.card h2{margin:0 0 8px 0;color:#fff}
-.card p{margin:6px 0;color:var(--muted)}
-.btn{
-  display:inline-block;margin-top:12px;padding:10px 16px;border-radius:8px;border:none;
-  background:linear-gradient(90deg,var(--accent),#34d399);color:#042018;font-weight:700;cursor:pointer;
-  transition:transform .15s ease, box-shadow .15s ease;
+
+.card {
+    background: var(--white);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
 }
-.btn:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(52,211,153,0.12)}
 
-/* اضافات */
-.addons{margin-top:28px;padding:18px;background:var(--glass);border-radius:10px;border:1px solid rgba(255,255,255,0.03)}
-.addons h2{color:var(--accent);margin-top:0}
-.addons ul{padding-left:18px;margin:8px 0 0 0;color:var(--muted)}
+.card:hover {
+    transform: translateY(-10px);
+}
 
-/* Footer */
-.site-footer{padding:18px 0;text-align:center;color:#9fb0c6;margin-top:28px}
+.card-header {
+    background: #f1f5f9;
+    padding: 20px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-align: center;
+    border-bottom: 2px solid #e2e8f0;
+}
 
-/* استجابة */
-@media (max-width:600px){
-  .site-header{padding:24px}
-  .container{padding:16px}
+.featured .card-header {
+    background: var(--primary-color);
+    color: white;
+}
+
+.card-body {
+    padding: 25px;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.desc {
+    color: #64748b;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    min-height: 50px;
+}
+
+.features {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 25px;
+    text-align: right;
+}
+
+.features li {
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
+.features span {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.price {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 25px;
+    color: var(--accent-color);
+}
+
+.btn {
+    display: inline-block;
+    background: var(--primary-color);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: var(--accent-color);
+}
+
+.section-title {
+    margin-top: 60px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.addons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 15px;
+}
+
+.addon-item {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    border-right: 4px solid var(--accent-color);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    font-size: 0.9rem;
+}
+
+footer {
+    text-align: center;
+    padding: 40px;
+    background: #1e293b;
+    color: white;
+    margin-top: 50px;
 }
