@@ -1,36 +1,75 @@
-// script.js - مدمج: ساعة رقمية، تبديل لغة، تحميل صورة شخصية، وتأثير أزرار
+// script.js - ساعة بتوقيت مصر (أرقام عربية)، تبديل لغة، مودال طلب، تحميل صورة مع fallback
+
 document.addEventListener('DOMContentLoaded', function(){
 
-  /* ===== ساعة رقمية ===== */
-  function updateClock(){
+  /* ===== الساعة بتوقيت القاهرة وبأرقام عربية (24 ساعة) ===== */
+  function updateClockCairo(){
     const el = document.getElementById('site-clock');
     if(!el) return;
     const now = new Date();
-    const hh = String(now.getHours()).padStart(2,'0');
-    const mm = String(now.getMinutes()).padStart(2,'0');
-    el.textContent = `${hh}:${mm}`;
+    // نستخدم Intl لتحديد timeZone القاهرة
+    const opts = { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Africa/Cairo' };
+    // نعرض بالأرقام العربية للمستخدم المصري
+    const timeStr = new Intl.DateTimeFormat('ar-EG', opts).format(now);
+    el.textContent = timeStr;
   }
-  updateClock();
-  setInterval(updateClock, 1000);
+  updateClockCairo();
+  setInterval(updateClockCairo, 1000);
 
-  /* ===== تبديل اللغة البسيط ===== */
+  /* ===== تبديل اللغة (AR <-> EN) مع استبدال نصوص data-i18n ===== */
+  const translations = {
+    ar: {
+      'site-title': 'باقات تصميم المواقع',
+      'site-sub': 'اختر الباقة المناسبة لك وأضف الإضافات التي تحتاجها',
+      'order': 'اطلب الآن',
+      'pkg-personal-title': 'موقع شخصي',
+      'pkg-personal-desc': 'صفحة تعريفية + معرض أعمال + تواصل',
+      'pkg-smallco-title': 'موقع شركة صغير',
+      'pkg-smallco-desc': 'رئيسية + خدمات + من نحن + تواصل',
+      'pkg-mediumco-title': 'موقع شركة متوسط',
+      'pkg-mediumco-desc': 'كل ما سبق + مدونة/أخبار + معرض صور',
+      'pkg-shop-simple-title': 'متجر إلكتروني بسيط',
+      'pkg-shop-simple-desc': 'منتجات + سلة + تواصل',
+      'pkg-shop-adv-title': 'متجر إلكتروني متقدم',
+      'pkg-shop-adv-desc': 'منتجات + سلة + دفع أونلاين + حسابات مستخدمين',
+      'addons-title': '✨ الإضافات المدفوعة'
+    },
+    en: {
+      'site-title': 'Website Packages',
+      'site-sub': 'Choose the right package and add the extras you need',
+      'order': 'Order Now',
+      'pkg-personal-title': 'Personal Website',
+      'pkg-personal-desc': 'Profile page + portfolio + contact',
+      'pkg-smallco-title': 'Small Company Website',
+      'pkg-smallco-desc': 'Home + Services + About + Contact',
+      'pkg-mediumco-title': 'Medium Company Website',
+      'pkg-mediumco-desc': 'All above + Blog/News + Gallery',
+      'pkg-shop-simple-title': 'Simple E‑commerce',
+      'pkg-shop-simple-desc': 'Products + Cart + Contact',
+      'pkg-shop-adv-title': 'Advanced E‑commerce',
+      'pkg-shop-adv-desc': 'Products + Cart + Online Payment + Accounts',
+      'addons-title': '✨ Paid Add-ons'
+    }
+  };
+
   const langBtn = document.getElementById('lang-toggle');
   let lang = document.documentElement.lang || 'ar';
-  const translations = {
-    ar: { 'site-sub': 'اختر الباقة المناسبة لك وأضف الإضافات التي تحتاجها', 'order': 'اطلب الآن' },
-    en: { 'site-sub': 'Choose the right package and add the extras you need', 'order': 'Order Now' }
-  };
   if(langBtn){
     langBtn.textContent = (lang === 'ar') ? 'EN' : 'ع';
     langBtn.addEventListener('click', function(){
       lang = (lang === 'ar') ? 'en' : 'ar';
       document.documentElement.lang = lang;
       langBtn.textContent = (lang === 'ar') ? 'EN' : 'ع';
+      // تبديل النصوص
       document.querySelectorAll('[data-i18n]').forEach(el=>{
         const key = el.getAttribute('data-i18n');
         if(translations[lang] && translations[lang][key]){
           el.textContent = translations[lang][key];
         }
+      });
+      // تحديث أزرار الطلب (عناصر بدون data-i18n)
+      document.querySelectorAll('.order-btn').forEach(btn=>{
+        btn.textContent = translations[lang] && translations[lang]['order'] ? translations[lang]['order'] : btn.textContent;
       });
     });
   }
@@ -50,37 +89,76 @@ document.addEventListener('DOMContentLoaded', function(){
     if(src) profileImg.src = src;
   }
 
-  /* ===== تعامل موحد مع الأزرار ===== */
-  // تأثير بسيط عند الضغط على الأزرار (كودك الأصلي)
-  document.querySelectorAll('.btn').forEach(button => {
-    // نحتفظ بالوظيفة الأصلية (console) لكن نمنع تكرار الأحداث
-    if(!button.dataset.hasClick){
-      button.addEventListener('click', function(e){
-        console.log("تم التوجه لصفحة الطلب...");
-        // إذا الزر يحتوي href سيعمل تلقائياً، وإلا نوجه لصفحة الطلب
-        const href = button.getAttribute('href');
-        if(!href && button.classList.contains('order-btn')){
-          e.preventDefault();
-          window.location.href = 'request.html';
-        }
-      });
-      button.dataset.hasClick = '1';
-    }
+  /* ===== مودال الطلب البسيط ===== */
+  const modal = document.getElementById('order-modal');
+  const modalClose = document.getElementById('modal-close');
+  const modalCancel = document.getElementById('modal-cancel');
+  const modalPackage = document.getElementById('modal-package');
+  const orderForm = document.getElementById('order-form');
+
+  function openModal(packageName){
+    if(!modal) return;
+    modal.setAttribute('aria-hidden','false');
+    modalPackage.textContent = packageName || 'طلب خدمة';
+    // ضبط لغة الزر داخل الموديال
+    const submitBtn = modal.querySelector('button[type="submit"]');
+    if(submitBtn) submitBtn.textContent = (lang === 'ar') ? 'إرسال الطلب' : 'Send Order';
+  }
+  function closeModal(){
+    if(!modal) return;
+    modal.setAttribute('aria-hidden','true');
+  }
+
+  // ربط أزرار "اطلب الآن"
+  document.querySelectorAll('.order-btn').forEach(btn=>{
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      const pkg = btn.dataset.package || btn.textContent || 'طلب خدمة';
+      openModal(pkg);
+    });
   });
 
-  // أزرار الطلب الخاصة (تضمن عمل الطلب أو فتح مودال لاحقاً)
-  document.querySelectorAll('.order-btn, .btn-primary').forEach(btn=>{
-    if(!btn.dataset.orderBound){
-      btn.addEventListener('click', function(e){
-        // إذا كان الزر رابطاً حقيقياً اترك المتصفح يتعامل معه
-        const href = btn.getAttribute('href');
-        if(!href){
-          e.preventDefault();
-          // هنا يمكن فتح مودال أو تمرير بيانات الباقة
-          window.location.href = 'request.html';
-        }
+  if(modalClose) modalClose.addEventListener('click', closeModal);
+  if(modalCancel) modalCancel.addEventListener('click', closeModal);
+  // إغلاق عند الضغط خارج اللوحة
+  if(modal){
+    modal.addEventListener('click', function(e){
+      if(e.target === modal) closeModal();
+    });
+  }
+
+  // إرسال الطلب (هنا نجهز البيانات ويمكن لاحقًا ربط واتساب/تليجرام أو API)
+  if(orderForm){
+    orderForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      const formData = new FormData(orderForm);
+      const payload = {
+        package: modalPackage.textContent,
+        name: formData.get('name'),
+        phone: formData.get('phone'),
+        details: formData.get('details')
+      };
+      // حالياً نعرض في console ثم نغلق المودال. لاحقًا يمكن إرسال عبر API أو فتح واتساب.
+      console.log('طلب جديد:', payload);
+      // مثال: فتح واتساب مع رسالة جاهزة (تعليق - يحتاج رقمك)
+      // const waNumber = '20XXXXXXXXX';
+      // const waText = encodeURIComponent(`طلب خدمة: ${payload.package}\nالاسم: ${payload.name}\nالهاتف: ${payload.phone}\nالتفاصيل: ${payload.details}`);
+      // window.open(`https://wa.me/${waNumber}?text=${waText}`, '_blank');
+
+      // إظهار تأكيد بسيط ثم إغلاق
+      alert((lang === 'ar') ? 'تم إرسال الطلب. سنتواصل معك قريبًا.' : 'Order sent. We will contact you soon.');
+      orderForm.reset();
+      closeModal();
+    });
+  }
+
+  /* ===== تأثير بسيط عند الضغط على الأزرار (console) ===== */
+  document.querySelectorAll('.btn').forEach(button => {
+    if(!button.dataset.hasClick){
+      button.addEventListener('click', function(){
+        console.log("زر تم الضغط عليه:", button.textContent.trim());
       });
-      btn.dataset.orderBound = '1';
+      button.dataset.hasClick = '1';
     }
   });
 
