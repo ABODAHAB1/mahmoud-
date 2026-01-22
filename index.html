@@ -1,123 +1,130 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>باقات تصميم المواقع | محمود أبو الدهب</title>
-    
-    <!-- ربط ملف التصميم -->
-    <link rel="stylesheet" href="style.css">
-    <!-- خط Cairo -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>باقات تصميم المواقع | محمود أبو الدهب</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
-    <!-- خلفية النجوم -->
-    <div class="stars"></div>
-
-    <header>
-        <img src="https://iili.io/f4cpJb1.jpg" alt="صورة محمود" class="profile-pic">
-        <h1>باقات تصميم المواقع</h1>
-        <p>اختر الباقة المناسبة لك وأضف الإضافات التي تحتاجها</p>
-        <div id="clock"></div>
-        <button class="translate-btn">🇬🇧 ترجمة</button>
-    </header>
-
-    <div class="container">
-        <!-- قسم الباقات -->
-        <div class="pricing-grid">
-            <!-- باقة 1 -->
-            <div class="card">
-                <div class="card-header">موقع شخصي</div>
-                <div class="card-body">
-                    <p class="desc">صفحة تعريفية + معرض أعمال + تواصل</p>
-                    <ul class="features">
-                        <li><span>عدد الصفحات:</span> 3</li>
-                        <li><span>مدة التسليم:</span> 5 أيام</li>
-                    </ul>
-                    <div class="price">1500 – 2000 جنيه</div>
-                    <a href="request.html" class="btn">اطلب الآن</a>
-                </div>
-            </div>
-
-            <!-- باقي الباقات زي ما هي -->
-            <div class="card">
-                <div class="card-header">موقع شركة صغير</div>
-                <div class="card-body">
-                    <p class="desc">رئيسية + خدمات + من نحن + تواصل</p>
-                    <ul class="features">
-                        <li><span>عدد الصفحات:</span> 4–5</li>
-                        <li><span>مدة التسليم:</span> 7 أيام</li>
-                    </ul>
-                    <div class="price">2500 – 3500 جنيه</div>
-                    <a href="request.html" class="btn">اطلب الآن</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">موقع شركة متوسط</div>
-                <div class="card-body">
-                    <p class="desc">كل ما سبق + مدونة/أخبار + معرض صور</p>
-                    <ul class="features">
-                        <li><span>عدد الصفحات:</span> 6–8</li>
-                        <li><span>مدة التسليم:</span> 10 أيام</li>
-                    </ul>
-                    <div class="price">4000 – 6000 جنيه</div>
-                    <a href="request.html" class="btn">اطلب الآن</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">متجر إلكتروني بسيط</div>
-                <div class="card-body">
-                    <p class="desc">منتجات + سلة + تواصل</p>
-                    <ul class="features">
-                        <li><span>عدد الصفحات:</span> 5–7</li>
-                        <li><span>مدة التسليم:</span> 14 يوم</li>
-                    </ul>
-                    <div class="price">6000 – 8000 جنيه</div>
-                    <a href="request.html" class="btn">اطلب الآن</a>
-                </div>
-            </div>
-
-            <div class="card featured">
-                <div class="card-header">متجر إلكتروني متقدم</div>
-                <div class="card-body">
-                    <p class="desc">منتجات + سلة + دفع أونلاين + حسابات مستخدمين</p>
-                    <ul class="features">
-                        <li><span>عدد الصفحات:</span> 10+</li>
-                        <li><span>مدة التسليم:</span> 21 يوم</li>
-                    </ul>
-                    <div class="price">10,000 – 15,000 جنيه</div>
-                    <a href="request.html" class="btn">اطلب الآن</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- قسم الإضافات -->
-        <h2 class="section-title">✨ الإضافات المدفوعة</h2>
-        <div class="addons-grid">
-            <div class="addon-item">
-                <span>تصميم شعار وهوية بصرية كاملة:</span> 800 – 1200 ج.م
-                <a href="request.html" class="addon-btn">اطلب الآن</a>
-            </div>
-            <div class="addon-item">
-                <span>ربط الموقع بـ Telegram/WhatsApp:</span> 500 ج.م
-                <a href="request.html" class="addon-btn">اطلب الآن</a>
-            </div>
-            <div class="addon-item">
-                <span>SEO أساسي:</span> 1000 ج.م
-                <a href="request.html" class="addon-btn">اطلب الآن</a>
-            </div>
-            <!-- باقي الإضافات بنفس الشكل -->
-        </div>
+  <header class="site-header">
+    <div class="header-left">
+      <div id="site-clock" class="site-clock" aria-live="polite">00:00</div>
     </div>
 
-    <footer>
-        <p>&copy; 2026 محمود أبو الدهب — تصميم وتطوير مواقع</p>
-    </footer>
+    <div class="header-center">
+      <h1 class="site-title">باقات تصميم المواقع</h1>
+      <p class="site-sub">اختر الباقة المناسبة لك وأضف الإضافات التي تحتاجها</p>
+    </div>
 
-    <!-- ربط ملف التفاعل -->
-    <script src="script.js"></script>
+    <div class="header-right">
+      <button id="lang-toggle" class="btn btn-ghost" aria-label="تبديل اللغة">EN</button>
+      <div class="profile-badge" title="محمود أبو الدهب">
+        <img id="profile-img" src="https://iili.io/f4cpJb1.th.jpg" alt="صورة محمود أبو الدهب">
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="pricing-grid" aria-label="باقات الأسعار">
+      <!-- باقة 1 -->
+      <article class="card">
+        <header class="card-header">موقع شخصي</header>
+        <div class="card-body">
+          <p class="desc">صفحة تعريفية + معرض أعمال + تواصل</p>
+          <ul class="features">
+            <li><strong>عدد الصفحات:</strong> 3</li>
+            <li><strong>مدة التسليم:</strong> 5 أيام</li>
+          </ul>
+          <div class="price">1500 – 2000 جنيه</div>
+          <a href="request.html" class="btn btn-primary order-btn">اطلب الآن</a>
+        </div>
+      </article>
+
+      <!-- باقة 2 -->
+      <article class="card">
+        <header class="card-header">موقع شركة صغير</header>
+        <div class="card-body">
+          <p class="desc">رئيسية + خدمات + من نحن + تواصل</p>
+          <ul class="features">
+            <li><strong>عدد الصفحات:</strong> 4–5</li>
+            <li><strong>مدة التسليم:</strong> 7 أيام</li>
+          </ul>
+          <div class="price">2500 – 3500 جنيه</div>
+          <a href="request.html" class="btn btn-primary order-btn">اطلب الآن</a>
+        </div>
+      </article>
+
+      <!-- باقة 3 -->
+      <article class="card">
+        <header class="card-header">موقع شركة متوسط</header>
+        <div class="card-body">
+          <p class="desc">كل ما سبق + مدونة/أخبار + معرض صور</p>
+          <ul class="features">
+            <li><strong>عدد الصفحات:</strong> 6–8</li>
+            <li><strong>مدة التسليم:</strong> 10 أيام</li>
+          </ul>
+          <div class="price">4000 – 6000 جنيه</div>
+          <a href="request.html" class="btn btn-primary order-btn">اطلب الآن</a>
+        </div>
+      </article>
+
+      <!-- باقة 4 -->
+      <article class="card">
+        <header class="card-header">متجر إلكتروني بسيط</header>
+        <div class="card-body">
+          <p class="desc">منتجات + سلة + تواصل</p>
+          <ul class="features">
+            <li><strong>عدد الصفحات:</strong> 5–7</li>
+            <li><strong>مدة التسليم:</strong> 14 يوم</li>
+          </ul>
+          <div class="price">6000 – 8000 جنيه</div>
+          <a href="request.html" class="btn btn-primary order-btn">اطلب الآن</a>
+        </div>
+      </article>
+
+      <!-- باقة 5 -->
+      <article class="card featured">
+        <header class="card-header">متجر إلكتروني متقدم</header>
+        <div class="card-body">
+          <p class="desc">منتجات + سلة + دفع أونلاين + حسابات مستخدمين</p>
+          <ul class="features">
+            <li><strong>عدد الصفحات:</strong> 10+</li>
+            <li><strong>مدة التسليم:</strong> 21 يوم</li>
+          </ul>
+          <div class="price">10,000 – 15,000 جنيه</div>
+          <a href="request.html" class="btn btn-primary order-btn">اطلب الآن</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="addons" aria-label="الإضافات المدفوعة">
+      <h2 class="section-title">✨ الإضافات المدفوعة</h2>
+      <div class="addons-grid">
+        <div class="addon-item">
+          <div class="addon-title">تصميم شعار وهوية بصرية كاملة</div>
+          <div class="addon-meta">800 – 1200 ج.م</div>
+          <a href="request.html" class="btn btn-sm">اطلب الآن</a>
+        </div>
+
+        <div class="addon-item">
+          <div class="addon-title">ربط الموقع بـ Telegram/WhatsApp</div>
+          <div class="addon-meta">500 ج.م</div>
+          <a href="request.html" class="btn btn-sm">اطلب الآن</a>
+        </div>
+
+        <!-- أضف باقي الإضافات بنفس النمط -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 محمود أبو الدهب — تصميم وتطوير مواقع</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
+
