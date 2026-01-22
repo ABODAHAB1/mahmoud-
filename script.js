@@ -1,28 +1,22 @@
-function openRequest(planName) {
-  localStorage.setItem("selectedPlan", planName);
-  window.location.href = "request.html";
+// فتح صفحة الطلب request.html مع تمرير اسم الباقة كـ query parameter
+function openRequest(packageName){
+  // ترميز الاسم ليتوافق مع URL
+  const encoded = encodeURIComponent(packageName);
+  // فتح في تبويب جديد مع تمرير الباقة
+  window.open(`request.html?package=${encoded}`, '_blank');
 }
 
-function sendRequest() {
-  const name = document.getElementById("name").value;
-  const contact = document.getElementById("contact").value;
-  const plan = localStorage.getItem("selectedPlan");
+// عند تحميل request.html يمكن قراءة الباقة من الرابط وعرضها تلقائياً
+function getQueryParam(name){
+  const params = new URLSearchParams(window.location.search);
+  return params.get(name);
+}
 
-  if (!name || !contact) {
-    alert("من فضلك املأ كل البيانات");
-    return;
+// إذا كنا في صفحة الطلب، نعرض اسم الباقة في العنصر المناسب
+document.addEventListener('DOMContentLoaded', function(){
+  const pkg = getQueryParam('package');
+  if(pkg){
+    const titleEl = document.getElementById('requested-package');
+    if(titleEl) titleEl.textContent = decodeURIComponent(pkg);
   }
-
-  const message = `لقد وصلتك مهمة جديدة ✅\n\nالخطة: ${plan}\nالاسم: ${name}\nالتواصل: ${contact}`;
-
-  // هنا لازم تضيف بيانات البوت بتاعك
-  const telegramUrl = `https://api.telegram.org/bot<YOUR_BOT_TOKEN>/sendMessage?chat_id=<YOUR_CHAT_ID>&text=${encodeURIComponent(message)}`;
-
-  fetch(telegramUrl)
-    .then(() => {
-      alert("تم إرسال الطلب بنجاح 🎉");
-    })
-    .catch(() => {
-      alert("حصل خطأ أثناء الإرسال");
-    });
-}
+});
