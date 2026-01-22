@@ -22,7 +22,7 @@
       text-align: center;
       box-shadow: 0 8px 20px rgba(0,0,0,0.4);
       color: #fff;
-      width: 380px;
+      width: 400px;
       animation: fadeIn 1.2s ease-in-out;
     }
 
@@ -33,7 +33,7 @@
       text-shadow: 0 0 10px #ffd700;
     }
 
-    input, textarea {
+    input {
       width: 90%;
       padding: 10px;
       margin: 10px 0;
@@ -43,41 +43,58 @@
       font-size: 14px;
     }
 
-    button {
-      background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    .plans button {
+      background: linear-gradient(45deg, #00c6ff, #0072ff);
       color: #fff;
       border: none;
-      padding: 12px 25px;
-      border-radius: 50px;
-      font-size: 16px;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-size: 14px;
       cursor: pointer;
       transition: 0.3s;
-      box-shadow: 0 0 15px rgba(255, 75, 43, 0.7);
-      margin: 8px;
+      margin: 5px;
+      box-shadow: 0 0 10px rgba(0, 114, 255, 0.7);
     }
 
-    button:hover {
+    .plans button:hover {
       transform: scale(1.1);
-      box-shadow: 0 0 25px rgba(255, 75, 43, 1);
+      box-shadow: 0 0 20px rgba(0, 114, 255, 1);
     }
 
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(-20px);}
-      to {opacity: 1; transform: translateY(0);}
+    #sendBtn {
+      background: linear-gradient(45deg, #ff416c, #ff4b2b);
+      margin-top: 15px;
     }
 
     #status {
       margin-top: 15px;
       font-weight: bold;
     }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(-20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
   </style>
 </head>
 <body>
   <div class="order-box">
     <h2>اطلب الآن ✨</h2>
+
+    <!-- اختيار الخطة -->
+    <div class="plans">
+      <button onclick="selectPlan('موقع شخصي')">موقع شخصي</button>
+      <button onclick="selectPlan('موقع شركة صغير')">موقع شركة صغير</button>
+      <button onclick="selectPlan('موقع شركة متوسط')">موقع شركة متوسط</button>
+      <button onclick="selectPlan('متجر إلكتروني بسيط')">متجر إلكتروني بسيط</button>
+      <button onclick="selectPlan('متجر إلكتروني متقدم')">متجر إلكتروني متقدم</button>
+    </div>
+
+    <!-- بيانات العميل -->
     <input type="text" id="name" placeholder="اكتب اسمك">
-    <textarea id="plan" placeholder="اكتب الخطة المطلوبة"></textarea>
     <input type="text" id="contact" placeholder="ضع رقمك أو يوزر تلجرام للتواصل">
+    <input type="text" id="country" placeholder="اكتب بلدك">
+
     <button id="sendBtn">إرسال الطلب 🚀</button>
     <button onclick="window.location.href='index.html'">⬅️ رجوع</button>
     <p id="status"></p>
@@ -86,13 +103,26 @@
   <script>
     const token = "8473526971:AAEAImWn31vxNuwwsd6Kk8_TnRQjrv6Txcg";
     const chatId = "8223130191"; // ده الـChat ID بتاعك
+    let selectedPlan = "";
+
+    function selectPlan(plan) {
+      selectedPlan = plan;
+      document.getElementById("status").innerText = `✅ اخترت: ${plan}`;
+      document.getElementById("status").style.color = "#ffd700";
+    }
 
     document.getElementById("sendBtn").addEventListener("click", () => {
       const name = document.getElementById("name").value;
-      const plan = document.getElementById("plan").value;
       const contact = document.getElementById("contact").value;
+      const country = document.getElementById("country").value;
 
-      const message = `طلب جديد 🚀\nالاسم: ${name}\nالخطة المطلوبة: ${plan}\nوسيلة التواصل: ${contact}`;
+      if (!selectedPlan) {
+        document.getElementById("status").innerText = "❌ لازم تختار خطة الأول";
+        document.getElementById("status").style.color = "#ff4b2b";
+        return;
+      }
+
+      const message = `طلب جديد 🚀\nالاسم: ${name}\nالخطة: ${selectedPlan}\nوسيلة التواصل: ${contact}\nالبلد: ${country}`;
 
       fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
         method: "POST",
