@@ -1,45 +1,106 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>طلب خدمة</title>
-  <link rel="stylesheet" href="style.css">
+  <title>زر اطلب الآن</title>
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .order-box {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      color: #fff;
+      width: 350px;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    .order-box h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #ffd700;
+      text-shadow: 0 0 10px #ffd700;
+    }
+
+    input, textarea {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+      font-size: 14px;
+    }
+
+    button {
+      background: linear-gradient(45deg, #ff416c, #ff4b2b);
+      color: #fff;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 50px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 15px rgba(255, 75, 43, 0.7);
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 25px rgba(255, 75, 43, 1);
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(-20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
 </head>
 <body>
-  <div class="container" style="padding-top:40px">
-    <h1>نموذج طلب خدمة</h1>
-    <p>الباقة المطلوبة: <strong id="requested-package">—</strong></p>
-
-    <form id="orderForm" style="margin-top:18px;max-width:700px">
-      <label>الاسم الكامل</label><br>
-      <input type="text" name="name" required style="width:100%;padding:10px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);margin-bottom:10px"><br>
-
-      <label>الهاتف أو واتساب</label><br>
-      <input type="text" name="phone" required style="width:100%;padding:10px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);margin-bottom:10px"><br>
-
-      <label>تفاصيل إضافية أو الإضافات المطلوبة</label><br>
-      <textarea name="details" rows="5" style="width:100%;padding:10px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);margin-bottom:10px"></textarea><br>
-
-      <button type="submit" class="btn">إرسال الطلب</button>
-    </form>
-
-    <p style="margin-top:14px;color:var(--muted)">بعد الإرسال يمكنك متابعة التواصل عبر رقمك أو سأراسلك عبر الوسيلة التي تفضلها.</p>
+  <div class="order-box">
+    <h2>اطلب الآن ✨</h2>
+    <input type="text" id="name" placeholder="اكتب اسمك">
+    <textarea id="plan" placeholder="اكتب الخطة اللي محتاجها"></textarea>
+    <button id="sendBtn">إرسال الطلب 🚀</button>
+    <p id="status"></p>
   </div>
 
-  <script src="script.js"></script>
   <script>
-    // تعامل بسيط مع إرسال النموذج (محلي فقط)
-    document.getElementById('orderForm').addEventListener('submit', function(e){
-      e.preventDefault();
-      const name = this.name.value.trim();
-      const phone = this.phone.value.trim();
-      const details = this.details.value.trim();
-      const pkg = document.getElementById('requested-package').textContent || 'غير محدد';
+    const token = "8473526971:AAEAImWn31vxNuwwsd6Kk8_TnRQjrv6Txcg";
+    const chatId = "ضع_الـChatID_بتاعك"; // لازم تجيبه من getUpdates
 
-      // هنا يمكنك استبدال هذا الجزء بإرسال عبر AJAX إلى سيرفر أو API
-      alert('تم تسجيل الطلب:\\n' + 'الباقة: ' + pkg + '\\n' + 'الاسم: ' + name + '\\n' + 'الهاتف: ' + phone);
-      this.reset();
+    document.getElementById("sendBtn").addEventListener("click", () => {
+      const name = document.getElementById("name").value;
+      const plan = document.getElementById("plan").value;
+      const message = `طلب جديد 🚀\nالاسم: ${name}\nالخطة المطلوبة: ${plan}`;
+
+      fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: message
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("status").innerText = "✅ تم إرسال الطلب بنجاح!";
+        document.getElementById("status").style.color = "#00ff7f";
+      })
+      .catch(err => {
+        document.getElementById("status").innerText = "❌ حصل خطأ في الإرسال";
+        document.getElementById("status").style.color = "#ff4b2b";
+      });
     });
   </script>
 </body>
