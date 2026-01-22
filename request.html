@@ -2,7 +2,7 @@
 <html lang="ar">
 <head>
   <meta charset="UTF-8">
-  <title>زر اطلب الآن</title>
+  <title>طلب خدمة</title>
   <style>
     body {
       font-family: 'Cairo', sans-serif;
@@ -22,7 +22,7 @@
       text-align: center;
       box-shadow: 0 8px 20px rgba(0,0,0,0.4);
       color: #fff;
-      width: 350px;
+      width: 380px;
       animation: fadeIn 1.2s ease-in-out;
     }
 
@@ -53,6 +53,7 @@
       cursor: pointer;
       transition: 0.3s;
       box-shadow: 0 0 15px rgba(255, 75, 43, 0.7);
+      margin: 8px;
     }
 
     button:hover {
@@ -64,25 +65,34 @@
       from {opacity: 0; transform: translateY(-20px);}
       to {opacity: 1; transform: translateY(0);}
     }
+
+    #status {
+      margin-top: 15px;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
   <div class="order-box">
     <h2>اطلب الآن ✨</h2>
     <input type="text" id="name" placeholder="اكتب اسمك">
-    <textarea id="plan" placeholder="اكتب الخطة اللي محتاجها"></textarea>
+    <textarea id="plan" placeholder="اكتب الخطة المطلوبة"></textarea>
+    <input type="text" id="contact" placeholder="ضع رقمك أو يوزر تلجرام للتواصل">
     <button id="sendBtn">إرسال الطلب 🚀</button>
+    <button onclick="window.location.href='index.html'">⬅️ رجوع</button>
     <p id="status"></p>
   </div>
 
   <script>
     const token = "8473526971:AAEAImWn31vxNuwwsd6Kk8_TnRQjrv6Txcg";
-    const chatId = 8223130191_بتاعك"; //  getUpdates
+    const chatId = "8223130191"; // ده الـChat ID بتاعك
 
     document.getElementById("sendBtn").addEventListener("click", () => {
       const name = document.getElementById("name").value;
       const plan = document.getElementById("plan").value;
-      const message = `طلب جديد 🚀\nالاسم: ${name}\nالخطة المطلوبة: ${plan}`;
+      const contact = document.getElementById("contact").value;
+
+      const message = `طلب جديد 🚀\nالاسم: ${name}\nالخطة المطلوبة: ${plan}\nوسيلة التواصل: ${contact}`;
 
       fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
         method: "POST",
