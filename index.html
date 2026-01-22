@@ -5,17 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>باقات تصميم المواقع | محمود أبو الدهب</title>
     
-    <!-- هذا السطر يربط ملف التصميم style.css -->
+    <!-- ربط ملف التصميم -->
     <link rel="stylesheet" href="style.css">
-    
-    <!-- إضافة خط Cairo من جوجل لتحسين المظهر العربي -->
-    <link href="https://fonts.googleapis.com" rel="stylesheet">
+    <!-- خط Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
 </head>
 <body>
 
+    <!-- خلفية النجوم -->
+    <div class="stars"></div>
+
     <header>
+        <img src="https://iili.io/f4cpJb1.jpg" alt="صورة محمود" class="profile-pic">
         <h1>باقات تصميم المواقع</h1>
         <p>اختر الباقة المناسبة لك وأضف الإضافات التي تحتاجها</p>
+        <div id="clock"></div>
+        <button class="translate-btn">🇬🇧 ترجمة</button>
     </header>
 
     <div class="container">
@@ -31,12 +36,11 @@
                         <li><span>مدة التسليم:</span> 5 أيام</li>
                     </ul>
                     <div class="price">1500 – 2000 جنيه</div>
-                    <!-- هذا الرابط يربط الزر بملف request.html -->
                     <a href="request.html" class="btn">اطلب الآن</a>
                 </div>
             </div>
 
-            <!-- باقة 2 -->
+            <!-- باقي الباقات زي ما هي -->
             <div class="card">
                 <div class="card-header">موقع شركة صغير</div>
                 <div class="card-body">
@@ -46,12 +50,10 @@
                         <li><span>مدة التسليم:</span> 7 أيام</li>
                     </ul>
                     <div class="price">2500 – 3500 جنيه</div>
-                     <!-- هذا الرابط يربط الزر بملف request.html -->
                     <a href="request.html" class="btn">اطلب الآن</a>
                 </div>
             </div>
 
-            <!-- باقة 3 -->
             <div class="card">
                 <div class="card-header">موقع شركة متوسط</div>
                 <div class="card-body">
@@ -61,12 +63,10 @@
                         <li><span>مدة التسليم:</span> 10 أيام</li>
                     </ul>
                     <div class="price">4000 – 6000 جنيه</div>
-                     <!-- هذا الرابط يربط الزر بملف request.html -->
                     <a href="request.html" class="btn">اطلب الآن</a>
                 </div>
             </div>
 
-            <!-- باقة 4 -->
             <div class="card">
                 <div class="card-header">متجر إلكتروني بسيط</div>
                 <div class="card-body">
@@ -76,12 +76,10 @@
                         <li><span>مدة التسليم:</span> 14 يوم</li>
                     </ul>
                     <div class="price">6000 – 8000 جنيه</div>
-                     <!-- هذا الرابط يربط الزر بملف request.html -->
                     <a href="request.html" class="btn">اطلب الآن</a>
                 </div>
             </div>
 
-            <!-- باقة 5 (المتقدمة) -->
             <div class="card featured">
                 <div class="card-header">متجر إلكتروني متقدم</div>
                 <div class="card-body">
@@ -91,18 +89,27 @@
                         <li><span>مدة التسليم:</span> 21 يوم</li>
                     </ul>
                     <div class="price">10,000 – 15,000 جنيه</div>
-                     <!-- هذا الرابط يربط الزر بملف request.html -->
                     <a href="request.html" class="btn">اطلب الآن</a>
                 </div>
             </div>
         </div>
 
-        <!-- قسم الإضافات (تم اختصاره هنا لتوفير المساحة) -->
+        <!-- قسم الإضافات -->
         <h2 class="section-title">✨ الإضافات المدفوعة</h2>
-         <div class="addons-grid">
-            <div class="addon-item"><span>تصميم شعار وهوية بصرية كاملة:</span> 800 – 1200 ج.م</div>
-            <div class="addon-item"><span>ربط الموقع بـ Telegram/WhatsApp:</span> 500 ج.م</div>
-            <!-- ... باقي الإضافات في ملف style.css ... -->
+        <div class="addons-grid">
+            <div class="addon-item">
+                <span>تصميم شعار وهوية بصرية كاملة:</span> 800 – 1200 ج.م
+                <a href="request.html" class="addon-btn">اطلب الآن</a>
+            </div>
+            <div class="addon-item">
+                <span>ربط الموقع بـ Telegram/WhatsApp:</span> 500 ج.م
+                <a href="request.html" class="addon-btn">اطلب الآن</a>
+            </div>
+            <div class="addon-item">
+                <span>SEO أساسي:</span> 1000 ج.م
+                <a href="request.html" class="addon-btn">اطلب الآن</a>
+            </div>
+            <!-- باقي الإضافات بنفس الشكل -->
         </div>
     </div>
 
@@ -110,7 +117,7 @@
         <p>&copy; 2026 محمود أبو الدهب — تصميم وتطوير مواقع</p>
     </footer>
 
-    <!-- هذا السطر يربط ملف التفاعل script.js -->
+    <!-- ربط ملف التفاعل -->
     <script src="script.js"></script>
 </body>
 </html>
