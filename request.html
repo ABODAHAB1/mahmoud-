@@ -7,20 +7,40 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>📩 نموذج طلب خدمة</h1>
-  </header>
+  <div class="container" style="padding-top:40px">
+    <h1>نموذج طلب خدمة</h1>
+    <p>الباقة المطلوبة: <strong id="requested-package">—</strong></p>
 
-  <section class="form">
-    <p><strong>الخطة المختارة:</strong> <span id="planName"></span></p>
-    <input type="text" id="name" placeholder="اكتب اسمك">
-    <input type="text" id="contact" placeholder="رقم واتساب أو يوزر تلجرام">
-    <button onclick="sendRequest()">إرسال</button>
-  </section>
+    <form id="orderForm" style="margin-top:18px;max-width:700px">
+      <label>الاسم الكامل</label><br>
+      <input type="text" name="name" required style="width:100%;padding:10px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);margin-bottom:10px"><br>
+
+      <label>الهاتف أو واتساب</label><br>
+      <input type="text" name="phone" required style="width:100%;padding:10px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);margin-bottom:10px"><br>
+
+      <label>تفاصيل إضافية أو الإضافات المطلوبة</label><br>
+      <textarea name="details" rows="5" style="width:100%;padding:10px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);margin-bottom:10px"></textarea><br>
+
+      <button type="submit" class="btn">إرسال الطلب</button>
+    </form>
+
+    <p style="margin-top:14px;color:var(--muted)">بعد الإرسال يمكنك متابعة التواصل عبر رقمك أو سأراسلك عبر الوسيلة التي تفضلها.</p>
+  </div>
 
   <script src="script.js"></script>
   <script>
-    document.getElementById("planName").innerText = localStorage.getItem("selectedPlan");
+    // تعامل بسيط مع إرسال النموذج (محلي فقط)
+    document.getElementById('orderForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const name = this.name.value.trim();
+      const phone = this.phone.value.trim();
+      const details = this.details.value.trim();
+      const pkg = document.getElementById('requested-package').textContent || 'غير محدد';
+
+      // هنا يمكنك استبدال هذا الجزء بإرسال عبر AJAX إلى سيرفر أو API
+      alert('تم تسجيل الطلب:\\n' + 'الباقة: ' + pkg + '\\n' + 'الاسم: ' + name + '\\n' + 'الهاتف: ' + phone);
+      this.reset();
+    });
   </script>
 </body>
 </html>
