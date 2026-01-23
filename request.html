@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>طلب خدمة</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       font-family: 'Cairo', sans-serif;
@@ -10,7 +11,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
       margin: 0;
     }
 
@@ -22,7 +23,8 @@
       text-align: center;
       box-shadow: 0 8px 20px rgba(0,0,0,0.4);
       color: #fff;
-      width: 460px;
+      width: 90%;
+      max-width: 460px;
       animation: fadeIn 1.2s ease-in-out;
     }
 
@@ -34,7 +36,7 @@
     }
 
     input {
-      width: 90%;
+      width: 100%;
       padding: 10px;
       margin: 10px 0;
       border: none;
@@ -47,7 +49,7 @@
       background: linear-gradient(45deg, #00c6ff, #0072ff);
       color: #fff;
       border: none;
-      padding: 10px 20px;
+      padding: 10px 15px;
       border-radius: 30px;
       font-size: 14px;
       cursor: pointer;
@@ -65,10 +67,11 @@
       background: linear-gradient(45deg, #ff416c, #ff4b2b);
       margin-top: 15px;
       box-shadow: 0 0 15px rgba(255, 75, 43, 0.9);
+      width: 100%;
     }
 
     #sendBtn:hover {
-      transform: scale(1.1);
+      transform: scale(1.05);
       box-shadow: 0 0 25px rgba(255, 75, 43, 1);
     }
 
@@ -80,6 +83,18 @@
     @keyframes fadeIn {
       from {opacity: 0; transform: translateY(-20px);}
       to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* Media Queries للتجاوب */
+    @media (max-width: 768px) {
+      .order-box {
+        padding: 20px;
+      }
+      .options button {
+        display: block;
+        width: 100%;
+        margin: 8px 0;
+      }
     }
   </style>
 </head>
