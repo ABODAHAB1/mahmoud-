@@ -22,7 +22,7 @@
       text-align: center;
       box-shadow: 0 8px 20px rgba(0,0,0,0.4);
       color: #fff;
-      width: 450px;
+      width: 460px;
       animation: fadeIn 1.2s ease-in-out;
     }
 
@@ -87,17 +87,17 @@
   <div class="order-box">
     <h2>✨ اطلب الآن ✨</h2>
 
-    <!-- الباقات والإضافات -->
+    <!-- جميع الخدمات -->
     <div class="options">
-      <button onclick="selectPlan('موقع شخصي')">موقع شخصي</button>
-      <button onclick="selectPlan('موقع شركة صغير')">موقع شركة صغير</button>
-      <button onclick="selectPlan('موقع شركة متوسط')">موقع شركة متوسط</button>
-      <button onclick="selectPlan('متجر إلكتروني بسيط')">متجر إلكتروني بسيط</button>
-      <button onclick="selectPlan('متجر إلكتروني متقدم')">متجر إلكتروني متقدم</button>
-      <button onclick="toggleAddon('تصميم شعار وهوية بصرية كاملة')">تصميم شعار وهوية بصرية كاملة</button>
-      <button onclick="toggleAddon('ربط الموقع بـ Telegram/WhatsApp')">ربط الموقع بـ Telegram/WhatsApp</button>
-      <button onclick="toggleAddon('SEO أساسي')">SEO أساسي</button>
-      <button onclick="toggleAddon('SEO متقدم')">SEO متقدم</button>
+      <button onclick="toggleService('موقع شخصي')">موقع شخصي</button>
+      <button onclick="toggleService('موقع شركة صغير')">موقع شركة صغير</button>
+      <button onclick="toggleService('موقع شركة متوسط')">موقع شركة متوسط</button>
+      <button onclick="toggleService('متجر إلكتروني بسيط')">متجر إلكتروني بسيط</button>
+      <button onclick="toggleService('متجر إلكتروني متقدم')">متجر إلكتروني متقدم</button>
+      <button onclick="toggleService('تصميم شعار وهوية بصرية كاملة')">تصميم شعار وهوية بصرية كاملة</button>
+      <button onclick="toggleService('ربط الموقع بـ Telegram/WhatsApp')">ربط الموقع بـ Telegram/WhatsApp</button>
+      <button onclick="toggleService('SEO أساسي')">SEO أساسي</button>
+      <button onclick="toggleService('SEO متقدم')">SEO متقدم</button>
     </div>
 
     <!-- بيانات العميل -->
@@ -113,24 +113,17 @@
   <script>
     const token = "8473526971:AAEAImWn31vxNuwwsd6Kk8_TnRQjrv6Txcg";
     const chatId = "8223130191"; 
-    let selectedPlan = "";
-    let selectedAddons = [];
+    let selectedServices = [];
 
-    function selectPlan(plan) {
-      selectedPlan = plan;
-      document.getElementById("status").innerText = `✅ اخترت: ${plan}`;
-      document.getElementById("status").style.color = "#ffd700";
-    }
-
-    function toggleAddon(addon) {
-      if (selectedAddons.includes(addon)) {
-        selectedAddons = selectedAddons.filter(a => a !== addon);
-        document.getElementById("status").innerText = `❌ أزلت: ${addon}`;
-        document.getElementById("status").style.color = "#ff4b2b";
+    function toggleService(service) {
+      if (selectedServices.includes(service)) {
+        selectedServices = selectedServices.filter(s => s !== service);
+        document.getElementById("status").innerText = `🗑️ أزلت: ${service}`;
+        document.getElementById("status").style.color = "#ccc";
       } else {
-        selectedAddons.push(addon);
-        document.getElementById("status").innerText = `✨ أضفت: ${addon}`;
-        document.getElementById("status").style.color = "#00ff7f";
+        selectedServices.push(service);
+        document.getElementById("status").innerText = `✅ اخترت: ${service}`;
+        document.getElementById("status").style.color = "#ffd700";
       }
     }
 
@@ -139,15 +132,13 @@
       const contact = document.getElementById("contact").value;
       const country = document.getElementById("country").value;
 
-      if (!selectedPlan) {
-        document.getElementById("status").innerText = "❌ لازم تختار خطة الأول";
+      if (selectedServices.length === 0) {
+        document.getElementById("status").innerText = "❌ لازم تختار خدمة واحدة على الأقل";
         document.getElementById("status").style.color = "#ff4b2b";
         return;
       }
 
-      const addonsText = selectedAddons.length ? `\nالإضافات:\n- ${selectedAddons.join('\n- ')}` : "";
-
-      const message = `طلب جديد 🚀\nالاسم: ${name}\nالخطة: ${selectedPlan}\nوسيلة التواصل: ${contact}\nالبلد: ${country}${addonsText}`;
+      const message = `طلب جديد 🚀\nالاسم: ${name}\nالخدمات:\n- ${selectedServices.join('\n- ')}\nوسيلة التواصل: ${contact}\nالبلد: ${country}`;
 
       fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
         method: "POST",
