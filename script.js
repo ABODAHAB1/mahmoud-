@@ -1,40 +1,98 @@
 document.addEventListener('DOMContentLoaded', function(){
 
-  /* الساعة بتوقيت القاهرة بالأرقام العربية */
+  /* ✅ الساعة بتوقيت القاهرة بالأرقام العربية */
   function updateClockCairo(){
     const el = document.getElementById('site-clock');
     if(!el) return;
     const now = new Date();
-    const opts = { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Africa/Cairo' };
-    const timeStr = new Intl.DateTimeFormat('ar-EG', opts).format(now);
+    const options = {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false,
+      timeZone: 'Africa/Cairo'
+    };
+    const timeStr = new Intl.DateTimeFormat('ar-EG', options).format(now);
     el.textContent = timeStr;
   }
   updateClockCairo();
   setInterval(updateClockCairo, 1000);
 
-  /* زر الترجمة */
+  /* ✅ زر الترجمة يغير كل النصوص */
   const translations = {
-    ar: { 'site-title':'باقات تصميم المواقع','site-sub':'اختر الباقة المناسبة لك وأضف الإضافات التي تحتاجها','order':'اطلب الآن' },
-    en: { 'site-title':'Website Packages','site-sub':'Choose the right package and add the extras you need','order':'Order Now' }
+    ar: {
+      'Website Packages': 'باقات تصميم المواقع',
+      'Choose the right package and add the extras you need': 'اختر الباقة المناسبة لك وأضف الإضافات التي تحتاجها',
+      'Simple E-commerce Store': 'متجر إلكتروني بسيط',
+      'Products + Cart + Contact': 'منتجات + سلة + تواصل',
+      'Pages: 5-7': 'عدد الصفحات: 5-7',
+      'Delivery: 14 days': 'مدة التسليم: 14 يوم',
+      'Medium Company Website': 'موقع شركة متوسط',
+      'All above + Blog/News + Gallery': 'كل ما سبق + مدونة/أخبار + معرض صور',
+      'Pages: 6-8': 'عدد الصفحات: 6-8',
+      'Delivery: 10 days': 'مدة التسليم: 10 أيام',
+      'Small Company Website': 'موقع شركة صغير',
+      'Main + Services + About + Contact': 'رئيسية + خدمات + من نحن + تواصل',
+      'Pages: 4-5': 'عدد الصفحات: 4-5',
+      'Delivery: 7 days': 'مدة التسليم: 7 أيام',
+      'Personal Website': 'موقع شخصي',
+      'Intro + Portfolio + Contact': 'صفحة تعريفية + معرض أعمال + تواصل',
+      'Pages: 3': 'عدد الصفحات: 3',
+      'Delivery: 5 days': 'مدة التسليم: 5 أيام',
+      'Order Now': 'اطلب الآن'
+    },
+    en: {
+      'باقات تصميم المواقع': 'Website Packages',
+      'اختر الباقة المناسبة لك وأضف الإضافات التي تحتاجها': 'Choose the right package and add the extras you need',
+      'متجر إلكتروني بسيط': 'Simple E-commerce Store',
+      'منتجات + سلة + تواصل': 'Products + Cart + Contact',
+      'عدد الصفحات: 5-7': 'Pages: 5-7',
+      'مدة التسليم: 14 يوم': 'Delivery: 14 days',
+      'موقع شركة متوسط': 'Medium Company Website',
+      'كل ما سبق + مدونة/أخبار + معرض صور': 'All above + Blog/News + Gallery',
+      'عدد الصفحات: 6-8': 'Pages: 6-8',
+      'مدة التسليم: 10 أيام': 'Delivery: 10 days',
+      'موقع شركة صغير': 'Small Company Website',
+      'رئيسية + خدمات + من نحن + تواصل': 'Main + Services + About + Contact',
+      'عدد الصفحات: 4-5': 'Pages: 4-5',
+      'مدة التسليم: 7 أيام': 'Delivery: 7 days',
+      'موقع شخصي': 'Personal Website',
+      'صفحة تعريفية + معرض أعمال + تواصل': 'Intro + Portfolio + Contact',
+      'عدد الصفحات: 3': 'Pages: 3',
+      'مدة التسليم: 5 أيام': 'Delivery: 5 days',
+      'اطلب الآن': 'Order Now'
+    }
   };
+
   const langBtn = document.getElementById('lang-toggle');
   let lang = document.documentElement.lang || 'ar';
+
   if(langBtn){
-    langBtn.textContent = (lang==='ar')?'EN':'ع';
+    langBtn.textContent = (lang==='ar') ? 'ENtranslate' : 'ع';
     langBtn.addEventListener('click', ()=>{
-      lang = (lang==='ar')?'en':'ar';
+      lang = (lang==='ar') ? 'en' : 'ar';
       document.documentElement.lang = lang;
-      langBtn.textContent = (lang==='ar')?'EN':'ع';
-      document.querySelectorAll('[data-i18n]').forEach(el=>{
-        const key = el.getAttribute('data-i18n');
-        if(translations[lang] && translations[lang][key]){
-          el.textContent = translations[lang][key];
+      langBtn.textContent = (lang==='ar') ? 'translate' : 'ع';
+
+      document.querySelectorAll('*').forEach(el=>{
+        const txt = el.textContent.trim();
+        if(translations[lang][txt]){
+          el.textContent = translations[lang][txt];
         }
-      });
-      document.querySelectorAll('.order-btn').forEach(btn=>{
-        btn.textContent = translations[lang]['order'];
       });
     });
   }
 
-  /* صورة شخصية fallback
+  /* ✅ صورة شخصية fallback */
+  const profileImg = document.getElementById('profile-pic');
+  if(profileImg){
+    profileImg.addEventListener('error', ()=>{
+      profileImg.src = 'images/default-avatar.png';
+    });
+  }
+
+});
