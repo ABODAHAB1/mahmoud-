@@ -24,7 +24,7 @@
       box-shadow: 0 8px 20px rgba(0,0,0,0.4);
       color: #fff;
       width: 90%;
-      max-width: 460px;
+      max-width: 480px;
       animation: fadeIn 1.2s ease-in-out;
     }
 
@@ -85,7 +85,6 @@
       to {opacity: 1; transform: translateY(0);}
     }
 
-    /* Media Queries للتجاوب */
     @media (max-width: 768px) {
       .order-box {
         padding: 20px;
@@ -102,20 +101,34 @@
   <div class="order-box">
     <h2>✨ اطلب الآن ✨</h2>
 
-    <!-- جميع الخدمات -->
     <div class="options">
+      <!-- الباقات الأساسية -->
       <button onclick="toggleService('موقع شخصي')">موقع شخصي</button>
       <button onclick="toggleService('موقع شركة صغير')">موقع شركة صغير</button>
       <button onclick="toggleService('موقع شركة متوسط')">موقع شركة متوسط</button>
       <button onclick="toggleService('متجر إلكتروني بسيط')">متجر إلكتروني بسيط</button>
       <button onclick="toggleService('متجر إلكتروني متقدم')">متجر إلكتروني متقدم</button>
+
+      <!-- الإضافات -->
       <button onclick="toggleService('تصميم شعار وهوية بصرية كاملة')">تصميم شعار وهوية بصرية كاملة</button>
       <button onclick="toggleService('ربط الموقع بـ Telegram/WhatsApp')">ربط الموقع بـ Telegram/WhatsApp</button>
       <button onclick="toggleService('SEO أساسي')">SEO أساسي</button>
       <button onclick="toggleService('SEO متقدم')">SEO متقدم</button>
+      <button onclick="toggleService('صفحة تسويقية احترافية')">صفحة تسويقية احترافية</button>
+      <button onclick="toggleService('عداد زيارات وتحليلات')">عداد زيارات وتحليلات</button>
+      <button onclick="toggleService('إنشاء حسابات للمستخدمين')">إنشاء حسابات للمستخدمين</button>
+      <button onclick="toggleService('لوحة تحكم مخصصة')">لوحة تحكم مخصصة</button>
+      <button onclick="toggleService('دعم وصيانة شهرية')">دعم وصيانة شهرية</button>
+
+      <!-- باقات إضافية -->
+      <button onclick="toggleService('موقع تواصل فقط بدون دومين')">موقع تواصل فقط بدون دومين</button>
+      <button onclick="toggleService('موقع متجر إلكتروني بدون دومين')">موقع متجر إلكتروني بدون دومين</button>
+      <button onclick="toggleService('موقع تعريفي بدون دومين')">موقع تعريفي بدون دومين</button>
+      <button onclick="toggleService('موقع تعليمي تفاعلي')">موقع تعليمي تفاعلي</button>
+      <button onclick="toggleService('موقع خدمات متعددة')">موقع خدمات متعددة</button>
+      <button onclick="toggleService('موقع تعريفي فاخر')">موقع تعريفي فاخر</button>
     </div>
 
-    <!-- بيانات العميل -->
     <input type="text" id="name" placeholder="اكتب اسمك">
     <input type="text" id="contact" placeholder="ضع رقمك أو يوزر تلجرام للتواصل">
     <input type="text" id="country" placeholder="اكتب بلدك">
