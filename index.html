@@ -4,23 +4,95 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>باقات تصميم المواقع | محمود أبو الدهب</title>
+
+  <!-- Favicons (ضع الملفات في /assets أو عدّل المسارات) -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon-64.png">
+  <link rel="icon" type="image/webp" sizes="128x128" href="/assets/favicon-128.webp">
+  <meta name="theme-color" content="#ffffff">
+
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* قواعد سريعة مضافة لتحسين الهيدر والشعار */
+    :root { --primary:#d32; --muted:#666; --card-bg:#fff; --border:#eee; }
+    body { font-family: 'Cairo', sans-serif; margin:0; background:#fafafa; color:#222; }
+    .site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 18px;
+      border-bottom: 1px solid var(--border);
+      background: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .header-left, .header-center, .header-right { display:flex; align-items:center; gap:10px; }
+    .site-clock { font-weight:700; font-family: 'Cairo', sans-serif; color:#333; }
+    .profile-badge img {
+      width: 64px;
+      height: 64px;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
+      border: 2px solid #f1f1f1;
+      background:#fff;
+    }
+    .site-header.sticky .profile-badge img { width:40px; height:40px; }
+    @media (max-width:600px) {
+      .profile-badge img { width:48px; height:48px; }
+      .site-title { font-size:1.05rem; }
+      .site-sub { display:none; }
+    }
+
+    /* Container and grid */
+    .container { max-width:1200px; margin:20px auto; padding:0 16px; }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+      align-items: start;
+    }
+    .card { background:var(--card-bg); border:1px solid var(--border); border-radius:8px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,0.03); }
+    .card-header { background:#fafafa; padding:14px 12px; font-weight:700; border-bottom:1px solid var(--border); }
+    .card-body { padding:12px; }
+    .desc { margin:0 0 8px 0; color:var(--muted); }
+    .features { list-style:none; padding:0; margin:0 0 10px 0; color:#333; }
+    .features li { margin:6px 0; font-size:0.95rem; }
+    .price { font-weight:700; color:var(--primary); margin-bottom:10px; }
+    .btn { text-decoration:none; padding:8px 12px; border-radius:6px; display:inline-block; }
+    .btn-primary { background:var(--primary); color:#fff; }
+    .featured { border:2px solid #f5c6cb; box-shadow:0 4px 12px rgba(211,50,50,0.06); }
+    h2.section-title { grid-column: 1 / -1; text-align:center; margin:40px 0 10px; }
+
+    /* consent note */
+    .consent-note { font-size:0.9rem; color:var(--muted); margin:18px 0; text-align:center; }
+
+    /* small helpers */
+    .order-btn { margin-top:8px; }
+  </style>
 </head>
 <body>
   <!-- HEADER -->
-  <header class="site-header">
+  <header class="site-header" id="main-header">
     <div class="header-left">
       <div id="site-clock" class="site-clock">--:--</div>
       <button id="lang-toggle" class="btn btn-ghost">EN</button>
     </div>
+
     <div class="header-center">
       <h1 class="site-title" data-i18n="site-title">باقات تصميم المواقع</h1>
       <p class="site-sub" data-i18n="site-sub">اختر الباقة المناسبة لك وأضف الإضافات التي تحتاجها</p>
     </div>
+
     <div class="header-right">
-      <div class="profile-badge">
-        <img id="profile-img" src="https://iili.io/f4cpJb1.th.jpg" alt="صورة محمود أبو الدهب">
+      <div class="profile-badge" title="محمود أبو الدهب">
+        <picture>
+          <source srcset="/assets/profile-128.webp" type="image/webp">
+          <img id="profile-img" src="/assets/profile-256.png" alt="محمود أبو الدهب — شعار الموقع" width="64" height="64">
+        </picture>
       </div>
     </div>
   </header>
@@ -29,7 +101,7 @@
   <main class="container">
     <!-- الباقات الأساسية -->
     <section class="pricing-grid">
-      <!-- الباقات القديمة -->
+
       <article class="card">
         <header class="card-header">موقع شخصي</header>
         <div class="card-body">
@@ -95,7 +167,6 @@
         </div>
       </article>
 
-      <!-- الباقات الجديدة -->
       <article class="card">
         <header class="card-header">موقع تعريفي بدون دومين</header>
         <div class="card-body">
@@ -147,6 +218,7 @@
         </div>
       </article>
 
+      <!-- الجزء الثاني: خدمات إضافية وباقات متقدمة -->
       <article class="card">
         <header class="card-header">موقع خدمات متعددة (Multi-Service)</header>
         <div class="card-body">
@@ -175,11 +247,10 @@
 
     </section>
 
-    <!-- الإضافات المدفوعة (تمت إضافتها بناءً على طلبك) -->
+    <!-- الإضافات المدفوعة -->
     <section class="pricing-grid" id="paid-addons">
-        <h2 style="grid-column: 1 / -1; text-align: center; margin-top: 40px; margin-bottom: 20px;">الإضافات المدفوعة</h2>
+        <h2 class="section-title">الإضافات المدفوعة</h2>
 
-        <!-- تصميم شعار وهوية بصرية كاملة -->
         <article class="card">
             <header class="card-header">تصميم شعار وهوية بصرية كاملة</header>
             <div class="card-body">
@@ -189,7 +260,6 @@
             </div>
         </article>
 
-        <!-- ربط الموقع بـ Telegram/WhatsApp -->
         <article class="card">
             <header class="card-header">ربط الموقع بـ Telegram/WhatsApp</header>
             <div class="card-body">
@@ -199,7 +269,6 @@
             </div>
         </article>
 
-        <!-- تهيئة الموقع لمحركات البحث -->
         <article class="card">
             <header class="card-header">تهيئة الموقع لمحركات البحث</header>
             <div class="card-body">
@@ -209,7 +278,6 @@
             </div>
         </article>
 
-        <!-- تحسين شامل + كلمات مفتاحية متقدم SEO -->
         <article class="card">
             <header class="card-header">تحسين شامل + كلمات مفتاحية متقدم SEO</header>
             <div class="card-body">
@@ -218,8 +286,7 @@
                 <a href="request.html" class="btn btn-primary order-btn">اطلب الآن</a>
             </div>
         </article>
-        
-        <!-- لوحة تحكم مخصصة -->
+
         <article class="card">
             <header class="card-header">لوحة تحكم مخصصة</header>
             <div class="card-body">
@@ -229,7 +296,6 @@
             </div>
         </article>
 
-        <!-- إنشاء حسابات للمستخدمين مع نظام تسجيل دخول وصلاحيات -->
         <article class="card">
             <header class="card-header">إنشاء حسابات للمستخدمين</header>
             <div class="card-body">
@@ -239,7 +305,6 @@
             </div>
         </article>
 
-        <!-- عداد زيارات وتحليلات -->
         <article class="card">
             <header class="card-header">عداد زيارات وتحليلات</header>
             <div class="card-body">
@@ -249,7 +314,6 @@
             </div>
         </article>
 
-        <!-- صفحة تسويقية احترافية (Landing Page) -->
         <article class="card">
             <header class="card-header">صفحة تسويقية احترافية</header>
             <div class="card-body">
@@ -258,8 +322,7 @@
                 <a href="request.html" class="btn btn-primary order-btn">اطلب الآن</a>
             </div>
         </article>
-        
-        <!-- دعم وصيانة شهرية -->
+
         <article class="card">
             <header class="card-header">دعم وصيانة شهرية</header>
             <div class="card-body">
@@ -271,7 +334,39 @@
 
     </section>
 
+    <p class="consent-note">
+      باستخدامك لهذا الموقع، أنت توافق على استخدام صورة الملف الشخصي كشعار للموقع عند الحاجة.
+    </p>
+
   </main>
+
+  <!-- سكربت الساعة بنظام 24 ساعة -->
+  <script>
+  (function startClock() {
+    const el = document.getElementById('site-clock');
+    if (!el) return;
+    function pad(n){ return n.toString().padStart(2,'0'); }
+    function update(){
+      const now = new Date();
+      const hours = pad(now.getHours()); // 24-hour format
+      const minutes = pad(now.getMinutes());
+      el.textContent = `${hours}:${minutes}`;
+    }
+    update();
+    setInterval(update, 30000);
+  })();
+
+  // إضافة/إزالة صنف sticky عند التمرير (اختياري لتحجيم الشعار)
+  (function stickyHeader(){
+    const header = document.getElementById('main-header');
+    if(!header) return;
+    window.addEventListener('scroll', function(){
+      if(window.scrollY > 20) header.classList.add('sticky');
+      else header.classList.remove('sticky');
+    });
+  })();
+  </script>
+
   <script src="script.js"></script>
 </body>
 </html>
