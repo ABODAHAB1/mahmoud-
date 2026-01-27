@@ -50,11 +50,11 @@ document.addEventListener('DOMContentLoaded', function(){
   let lang = document.documentElement.lang || 'ar';
 
   if(langBtn){
-    langBtn.textContent = (lang==='ar') ? 'ENtranslate' : 'ع';
+    langBtn.textContent = (lang==='ar') ? 'translate' : 'عربي';
     langBtn.addEventListener('click', ()=>{
       lang = (lang==='ar') ? 'en' : 'ar';
       document.documentElement.lang = lang;
-      langBtn.textContent = (lang==='ar') ? 'translate' : 'ع';
+      langBtn.textContent = (lang==='ar') ? 'translate' : 'عربيٍ';
 
       document.querySelectorAll('*').forEach(el=>{
         const txt = el.textContent.trim();
