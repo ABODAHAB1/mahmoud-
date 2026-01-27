@@ -1,27 +1,5 @@
 document.addEventListener('DOMContentLoaded', function(){
 
-  /* الساعة بتوقيت القاهرة بالأرقام العربية */
-  function updateClockCairo(){
-    const el = document.getElementById('site-clock');
-    if(!el) return;
-    const now = new Date();
-    const options = {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit',
-      hour12: false,
-      timeZone: 'Africa/Cairo'
-    };
-    const timeStr = new Intl.DateTimeFormat('ar-EG', options).format(now);
-    el.textContent = timeStr;
-  }
-  updateClockCairo();
-  setInterval(updateClockCairo, 1000);
-
   /* زر الترجمة يغير كل النصوص */
   const translations = {
     ar: {
