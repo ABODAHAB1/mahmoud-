@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function(){
 
-  /* ✅ الساعة بتوقيت القاهرة بالأرقام العربية */
+  /* الساعة بتوقيت القاهرة بالأرقام العربية */
   function updateClockCairo(){
     const el = document.getElementById('site-clock');
     if(!el) return;
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function(){
   updateClockCairo();
   setInterval(updateClockCairo, 1000);
 
-  /* ✅ زر الترجمة يغير كل النصوص */
+  /* زر الترجمة يغير كل النصوص */
   const translations = {
     ar: {
       'Website Packages': 'باقات تصميم المواقع',
@@ -80,19 +80,55 @@ document.addEventListener('DOMContentLoaded', function(){
 
       document.querySelectorAll('*').forEach(el=>{
         const txt = el.textContent.trim();
-        if(translations[lang][txt]){
+        if(translations[lang] && translations[lang][txt]){
           el.textContent = translations[lang][txt];
         }
       });
     });
   }
 
-  /* ✅ صورة شخصية fallback */
+  /* صورة شخصية fallback */
   const profileImg = document.getElementById('profile-pic');
   if(profileImg){
     profileImg.addEventListener('error', ()=>{
       profileImg.src = 'images/default-avatar.png';
     });
   }
+
+  /* إعداد Firebase + عداد الزوار */
+  const firebaseConfig = {
+    apiKey: "AIzaSyDg3HhwgnQQn_JOjXCGyCQP8YHF5FN8bE0",
+    authDomain: "abodahab-4d14e.firebaseapp.com",
+    projectId: "abodahab-4d14e",
+    storageBucket: "abodahab-4d14e.appspot.com",
+    messagingSenderId: "442622031382",
+    appId: "1:442622031382:web:38c1f156f43a683eb56737"
+  };
+
+  if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+  }
+  const db = firebase.firestore();
+
+  const counterRef = db.collection("visits").doc("counter");
+
+  async function updateCounterAndShow() {
+    try {
+      await counterRef.set(
+        { count: firebase.firestore.FieldValue.increment(1) },
+        { merge: true }
+      );
+      const snap = await counterRef.get();
+      const data = snap.data() || { count: 1 };
+      const el = document.getElementById("visit-counter");
+      if(el) el.textContent = "عدد الزوار: " + data.count;
+    } catch (e) {
+      const el = document.getElementById("visit-counter");
+      if(el) el.textContent = "خطأ في العداد";
+      console.error("Counter error:", e);
+    }
+  }
+
+  updateCounterAndShow();
 
 });
