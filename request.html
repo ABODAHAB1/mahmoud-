@@ -7,34 +7,22 @@
   <style>
     body {
       font-family: 'Cairo', sans-serif;
-      background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
-      color: white;
-      margin: 0;
-      min-height: 100vh;
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
       display: flex;
       justify-content: center;
       align-items: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: url('stars.png') repeat;
-      z-index: -1;
-      opacity: 0.3;
+      min-height: 100vh;
+      margin: 0;
     }
 
     .order-box {
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
       border-radius: 15px;
       padding: 30px;
       text-align: center;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      color: #fff;
       width: 90%;
       max-width: 480px;
       animation: fadeIn 1.2s ease-in-out;
@@ -57,17 +45,8 @@
       font-size: 14px;
     }
 
-    button.basic {
-      background: linear-gradient(45deg, #00c6ff, #0072ff);
-      box-shadow: 0 0 15px rgba(0, 114, 255, 0.9);
-    }
-
-    button.extra {
-      background: linear-gradient(45deg, #8e2de2, #4a00e0);
-      box-shadow: 0 0 15px rgba(138, 43, 226, 0.9);
-    }
-
     .options button {
+      background: linear-gradient(45deg, #00c6ff, #0072ff);
       color: #fff;
       border: none;
       padding: 10px 15px;
@@ -76,38 +55,24 @@
       cursor: pointer;
       transition: 0.3s;
       margin: 5px;
+      box-shadow: 0 0 15px rgba(0, 114, 255, 0.9);
     }
 
     .options button:hover {
       transform: scale(1.1);
+      box-shadow: 0 0 25px rgba(0, 114, 255, 1);
     }
 
-    button.shiny {
-      background: linear-gradient(45deg, #ffcc00, #ff0066);
-      color: white;
-      font-weight: bold;
-      box-shadow: 0 0 20px #ffcc00, 0 0 40px #ff0066;
-      position: relative;
-      overflow: hidden;
-      padding: 10px 20px;
-      border-radius: 10px;
-      margin-top: 10px;
-      border: none;
-      cursor: pointer;
+    #sendBtn {
+      background: linear-gradient(45deg, #ff416c, #ff4b2b);
+      margin-top: 15px;
+      box-shadow: 0 0 15px rgba(255, 75, 43, 0.9);
+      width: 100%;
     }
 
-    button.shiny::after {
-      content: "✨";
-      position: absolute;
-      top: -10px;
-      right: -10px;
-      font-size: 24px;
-      animation: twinkle 1.5s infinite;
-    }
-
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.2; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.3); }
+    #sendBtn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(255, 75, 43, 1);
     }
 
     #status {
@@ -138,36 +103,38 @@
 
     <div class="options">
       <!-- الباقات الأساسية -->
-      <button class="basic" onclick="toggleService('موقع شخصي')">موقع شخصي</button>
-      <button class="basic" onclick="toggleService('موقع شركة صغير')">موقع شركة صغير</button>
-      <button class="basic" onclick="toggleService('موقع شركة متوسط')">موقع شركة متوسط</button>
-      <button class="basic" onclick="toggleService('متجر إلكتروني بسيط')">متجر إلكتروني بسيط</button>
-      <button class="basic" onclick="toggleService('متجر إلكتروني متقدم')">متجر إلكتروني متقدم</button>
+      <button onclick="toggleService('موقع شخصي')">موقع شخصي</button>
+      <button onclick="toggleService('موقع شركة صغير')">موقع شركة صغير</button>
+      <button onclick="toggleService('موقع شركة متوسط')">موقع شركة متوسط</button>
+      <button onclick="toggleService('متجر إلكتروني بسيط')">متجر إلكتروني بسيط</button>
+      <button onclick="toggleService('متجر إلكتروني متقدم')">متجر إلكتروني متقدم</button>
 
       <!-- الإضافات -->
-      <button class="extra" onclick="toggleService('تصميم شعار وهوية بصرية كاملة')">تصميم شعار وهوية بصرية كاملة</button>
-      <button class="extra" onclick="toggleService('ربط الموقع بـ Telegram/WhatsApp')">ربط الموقع بـ Telegram/WhatsApp</button>
-      <button class="extra" onclick="toggleService('SEO أساسي')">SEO أساسي</button>
-      <button class="extra" onclick="toggleService('SEO متقدم')">SEO متقدم</button>
-      <button class="extra" onclick="toggleService('صفحة تسويقية احترافية')">صفحة تسويقية احترافية</button>
-      <button class="extra" onclick="toggleService('عداد زيارات وتحليلات')">عداد زيارات وتحليلات</button>
-      <button class="extra" onclick="toggleService('إنشاء حسابات للمستخدمين')">إنشاء حسابات للمستخدمين</button>
-      <button class="extra" onclick="toggleService('لوحة تحكم مخصصة')">لوحة تحكم مخصصة</button>
-      <button class="extra" onclick="toggleService('دعم وصيانة شهرية')">دعم وصيانة شهرية</button>
-      <button class="extra" onclick="toggleService('موقع تواصل فقط بدون دومين')">موقع تواصل فقط بدون دومين</button>
-      <button class="extra" onclick="toggleService('موقع متجر إلكتروني بدون دومين')">موقع متجر إلكتروني بدون دومين</button>
-      <button class="extra" onclick="toggleService('موقع تعريفي بدون دومين')">موقع تعريفي بدون دومين</button>
-      <button class="extra" onclick="toggleService('موقع تعليمي تفاعلي')">موقع تعليمي تفاعلي</button>
-      <button class="extra" onclick="toggleService('موقع خدمات متعددة')">موقع خدمات متعددة</button>
-      <button class="extra" onclick="toggleService('موقع تعريفي فاخر')">موقع تعريفي فاخر</button>
+      <button onclick="toggleService('تصميم شعار وهوية بصرية كاملة')">تصميم شعار وهوية بصرية كاملة</button>
+      <button onclick="toggleService('ربط الموقع بـ Telegram/WhatsApp')">ربط الموقع بـ Telegram/WhatsApp</button>
+      <button onclick="toggleService('SEO أساسي')">SEO أساسي</button>
+      <button onclick="toggleService('SEO متقدم')">SEO متقدم</button>
+      <button onclick="toggleService('صفحة تسويقية احترافية')">صفحة تسويقية احترافية</button>
+      <button onclick="toggleService('عداد زيارات وتحليلات')">عداد زيارات وتحليلات</button>
+      <button onclick="toggleService('إنشاء حسابات للمستخدمين')">إنشاء حسابات للمستخدمين</button>
+      <button onclick="toggleService('لوحة تحكم مخصصة')">لوحة تحكم مخصصة</button>
+      <button onclick="toggleService('دعم وصيانة شهرية')">دعم وصيانة شهرية</button>
+
+      <!-- باقات إضافية -->
+      <button onclick="toggleService('موقع تواصل فقط بدون دومين')">موقع تواصل فقط بدون دومين</button>
+      <button onclick="toggleService('موقع متجر إلكتروني بدون دومين')">موقع متجر إلكتروني بدون دومين</button>
+      <button onclick="toggleService('موقع تعريفي بدون دومين')">موقع تعريفي بدون دومين</button>
+      <button onclick="toggleService('موقع تعليمي تفاعلي')">موقع تعليمي تفاعلي</button>
+      <button onclick="toggleService('موقع خدمات متعددة')">موقع خدمات متعددة</button>
+      <button onclick="toggleService('موقع تعريفي فاخر')">موقع تعريفي فاخر</button>
     </div>
 
     <input type="text" id="name" placeholder="اكتب اسمك">
     <input type="text" id="contact" placeholder="ضع رقمك أو يوزر تلجرام للتواصل">
     <input type="text" id="country" placeholder="اكتب بلدك">
 
-    <button id="sendBtn" class="shiny">📤 إرسال الطلب</button>
-    <button onclick="window.location.href='index.html'" class="shiny">🔙 رجوع</button>
+    <button id="sendBtn">📤 إرسال الطلب</button>
+    <button onclick="window.location.href='index.html'">🔙 رجوع</button>
     <p id="status"></p>
   </div>
 
@@ -189,9 +156,36 @@
     }
 
     document.getElementById("sendBtn").addEventListener("click", () => {
-      const name = document.getElementById("name").value.trim();
-      const contact = document.getElementById("contact").value.trim();
-      const country = document.getElementById("country").value.trim();
+      const name = document.getElementById("name").value;
+      const contact = document.getElementById("contact").value;
+      const country = document.getElementById("country").value;
 
-      if (!name || !contact || !country) {
-        document.getElementById("status").innerText = "❌ من فضلك املأ الاسم ووسيلة التواصل والبلد";
+      if (selectedServices.length === 0) {
+        document.getElementById("status").innerText = "❌ لازم تختار خدمة واحدة على الأقل";
+        document.getElementById("status").style.color = "#ff4b2b";
+        return;
+      }
+
+      const message = `طلب جديد 🚀\nالاسم: ${name}\nالخدمات:\n- ${selectedServices.join('\n- ')}\nوسيلة التواصل: ${contact}\nالبلد: ${country}`;
+
+      fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: message
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("status").innerText = "✅ تم إرسال الطلب بنجاح!";
+        document.getElementById("status").style.color = "#00ff7f";
+      })
+      .catch(err => {
+        document.getElementById("status").innerText = "❌ حصل خطأ في الإرسال";
+        document.getElementById("status").style.color = "#ff4b2b";
+      });
+    });
+  </script>
+</body>
+</html>
