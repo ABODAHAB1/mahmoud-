@@ -1,277 +1,164 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>باقات تصميم المواقع | محمود أبو الدهب</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>باقات وخدمات محمود أبو الدهب</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="header-left">
-      <div id="site-clock" class="site-clock">--:--</div>
-      <button id="lang-toggle" class="btn btn-ghost">EN</button>
-    </div>
-    <div class="header-center">
-      <h1 class="site-title" data-i18n="site-title">باقات تصميم المواقع</h1>
-      <p class="site-sub" data-i18n="site-sub">اختر الباقة المناسبة لك وأضف الإضافات التي تحتاجها</p>
-    </div>
-    <div class="header-right">
-      <div class="profile-badge">
-        <img id="profile-img" src="https://iili.io/f4cpJb1.th.jpg" alt="صورة محمود أبو الدهب">
-      </div>
-    </div>
+  <header>
+    <h1>باقات تصميم المواقع</h1>
+    <nav>
+      <a href="#packages">الباقات</a>
+      <a href="#addons">الإضافات</a>
+      <a href="#contact">تواصل</a>
+    </nav>
   </header>
 
-  <!-- MAIN -->
-  <main class="container">
-    <!-- الباقات الأساسية -->
-    <section class="pricing-grid">
-      <!-- الباقات القديمة -->
-      <article class="card">
-        <header class="card-header">موقع شخصي</header>
-        <div class="card-body">
-          <p class="desc">صفحة تعريفية + معرض أعمال + تواصل</p>
-          <ul class="features">
-            <li><span>عدد الصفحات:</span> 3</li>
-            <li><span>مدة التسليم:</span> 5 أيام</li>
-          </ul>
-          <div class="price">1500 – 2000 جنيها</div>
-          <a href="request.html" class="btn btn-primary order-btn">اطلب الآن</a>
-        </div>
-      </article>
+  <section id="packages">
+    <h2>اختر الباقة المناسبة لك</h2>
 
-      <article class="card">
-        <header class="card-header">موقع شركة صغير</header>
-        <div class="card-body">
-          <p class="desc">رئيسية + خدمات + من نحن + تواصل</p>
-          <ul class="features">
-            <li><span>عدد الصفحات:</span> 4–5</li>
-            <li><span>مدة التسليم:</span> 7 أيام</li>
-          </ul>
-          <div class="price">2500 – 3500 جنيها</div>
-          <a href="request.html" class="btn btn-primary order-btn">اطلب الآن</a>
-        </div>
-      </article>
+    <!-- الأقل سعرًا -->
+    <div class="package">
+      <h3>موقع تواصل فقط بدون دومين</h3>
+      <p>صفحة تواصل مباشرة + نموذج إرسال + خلفية متحركة</p>
+      <p>عدد الصفحات: 1 | مدة التسليم: يومين</p>
+      <p>السعر: 150 جنيها</p>
+      <a href="request.html" class="btn">اطلب الآن</a>
+    </div>
 
-      <article class="card">
-        <header class="card-header">موقع شركة متوسط</header>
-        <div class="card-body">
-          <p class="desc">كل ما سبق + مدونة/أخبار + معرض صور</p>
-          <ul class="features">
-            <li><span>عدد الصفحات:</span> 6–8</li>
-            <li><span>مدة التسليم:</span> 10 أيام</li>
-          </ul>
-          <div class="price">4000 – 6000 جنيها</div>
-          <a href="request.html" class="btn btn-primary order-btn">اطلب الآن</a>
-        </div>
-      </article>
+    <div class="package">
+      <h3>موقع تعريفي بدون دومين</h3>
+      <p>صفحة تعريفية + معرض أعمال بسيط + تواصل</p>
+      <p>مدة التسليم: يومين</p>
+      <p>السعر: 250 جنيها</p>
+      <a href="request.html" class="btn">اطلب الآن</a>
+    </div>
 
-      <article class="card">
-        <header class="card-header">متجر إلكتروني بسيط</header>
-        <div class="card-body">
-          <p class="desc">منتجات + سلة + تواصل</p>
-          <ul class="features">
-            <li><span>عدد الصفحات:</span> 5–7</li>
-            <li><span>مدة التسليم:</span> 14 يوم</li>
-          </ul>
-          <div class="price">6000 – 8000 جنيها</div>
-          <a href="request.html" class="btn btn-primary order-btn">اطلب الآن</a>
-        </div>
-      </article>
+    <div class="package">
+      <h3>موقع متجر إلكتروني بدون دومين</h3>
+      <p>منتجات + سلة + تواصل</p>
+      <p>عدد الصفحات: 5–7 | مدة التسليم: 10 أيام</p>
+      <p>السعر: 380 جنيها</p>
+      <a href="request.html" class="btn">اطلب الآن</a>
+    </div>
 
-      <article class="card featured">
-        <header class="card-header">متجر إلكتروني متقدم</header>
-        <div class="card-body">
-          <p class="desc">منتجات + سلة + دفع أونلاين + حسابات مستخدمين</p>
-          <ul class="features">
-            <li><span>عدد الصفحات:</span> 10+</li>
-            <li><span>مدة التسليم:</span> 21 يوم</li>
-          </ul>
-          <div class="price">10,000 – 15,000 جنيها</div>
-          <a href="request.html" class="btn btn-primary order-btn">اطلب الآن</a>
-        </div>
-      </article>
+    <div class="package">
+      <h3>موقع شخصي</h3>
+      <p>صفحة تعريفية + معرض أعمال + تواصل</p>
+      <p>عدد الصفحات: 3 | مدة التسليم: 5 أيام</p>
+      <p>السعر: 1500 – 2000 جنيها</p>
+      <a href="request.html" class="btn">اطلب الآن</a>
+    </div>
 
-      <!-- الباقات الجديدة -->
-      <article class="card">
-        <header class="card-header">موقع تعريفي بدون دومين</header>
-        <div class="card-body">
-          <p class="desc">صفحة تعريفية + معرض أعمال بسيط + تواصل</p>
-          <ul class="features">
-            <li><span>مدة التسليم:</span> يومين</li>
-          </ul>
-          <div class="price">250 جنيها</div>
-          <a href="request.html" class="btn btn-primary order-btn">اطلب الآن</a>
-        </div>
-      </article>
+    <div class="package">
+      <h3>موقع شركة صغير</h3>
+      <p>رئيسية + خدمات + من نحن + تواصل</p>
+      <p>عدد الصفحات: 4–5 | مدة التسليم: 7 أيام</p>
+      <p>السعر: 2500 – 3500 جنيها</p>
+      <a href="request.html" class="btn">اطلب الآن</a>
+    </div>
 
-      <article class="card">
-        <header class="card-header">موقع متجر إلكتروني بدون دومين</header>
-        <div class="card-body">
-          <p class="desc">منتجات + سلة + تواصل</p>
-          <ul class="features">
-            <li><span>عدد الصفحات:</span> 5–7</li>
-            <li><span>مدة التسليم:</span> 10 أيام</li>
-          </ul>
-          <div class="price">380 جنيها</div>
-          <a href="request.html" class="btn btn-primary order-btn">اطلب الآن</a>
-        </div>
-      </article>
+    <div class="package">
+      <h3>موقع تعريفي فاخر (VIP)</h3>
+      <p>صفحة رئيسية متوهجة + معرض أعمال ديناميكي + تواصل مباشر + خلفيات متحركة</p>
+      <p>عدد الصفحات: 4 | مدة التسليم: 6 أيام</p>
+      <p>السعر: 3000 – 4000 جنيها</p>
+      <a href="request.html" class="btn">اطلب الآن</a>
+    </div>
 
-      <article class="card">
-        <header class="card-header">موقع تواصل فقط بدون دومين</header>
-        <div class="card-body">
-          <p class="desc">صفحة تواصل مباشرة + نموذج إرسال + خلفية متحركة</p>
-          <ul class="features">
-            <li><span>عدد الصفحات:</span> 1</li>
-            <li><span>مدة التسليم:</span> يومين</li>
-          </ul>
-          <div class="price">150 جنيها</div>
-          <a href="request.html" class="btn btn-primary order-btn">اطلب الآن</a>
-        </div>
-      </article>
+    <div class="package">
+      <h3>موقع شركة متوسط</h3>
+      <p>كل ما سبق + مدونة/أخبار + معرض صور</p>
+      <p>عدد الصفحات: 6–8 | مدة التسليم: 10 أيام</p>
+      <p>السعر: 4000 – 6000 جنيها</p>
+      <a href="request.html" class="btn">اطلب الآن</a>
+    </div>
 
-      <article class="card">
-        <header class="card-header">موقع تعريفي فاخر (VIP)</header>
-        <div class="card-body">
-          <p class="desc">صفحة رئيسية متوهجة + معرض أعمال ديناميكي + تواصل مباشر + خلفيات متحركة</p>
-          <ul class="features">
-            <li><span>عدد الصفحات:</span> 4</li>
-            <li><span>مدة التسليم:</span> 6 أيام</li>
-          </ul>
-          <div class="price">3000 – 4000 جنيها</div>
-          <a href="request.html" class="btn btn-primary order-btn">اطلب الآن</a>
-        </div>
-      </article>
+    <div class="package">
+      <h3>موقع خدمات متعددة (Multi-Service)</h3>
+      <p>صفحة لكل خدمة + نموذج طلب منفصل + لوحة تحكم بسيطة</p>
+      <p>عدد الصفحات: 6–8 | مدة التسليم: 10 أيام</p>
+      <p>السعر: 5000 – 7000 جنيها</p>
+      <a href="request.html" class="btn">اطلب الآن</a>
+    </div>
 
-      <article class="card">
-        <header class="card-header">موقع خدمات متعددة (Multi-Service)</header>
-        <div class="card-body">
-          <p class="desc">صفحة لكل خدمة + نموذج طلب منفصل لكل خدمة + لوحة تحكم بسيطة</p>
-          <ul class="features">
-            <li><span>عدد الصفحات:</span> 6–8</li>
-            <li><span>مدة التسليم:</span> 10 أيام</li>
-          </ul>
-          <div class="price">5000 – 7000 جنيها</div>
-          <a href="request.html" class="btn btn-primary order-btn">اطلب الآن</a>
-        </div>
-      </article>
+    <div class="package">
+      <h3>متجر إلكتروني بسيط</h3>
+      <p>منتجات + سلة + تواصل</p>
+      <p>عدد الصفحات: 5–7 | مدة التسليم: 14 يوم</p>
+      <p>السعر: 6000 – 8000 جنيها</p>
+      <a href="request.html" class="btn">اطلب الآن</a>
+    </div>
 
-      <article class="card">
-        <header class="card-header">موقع تعليمي تفاعلي (Course Platform)</header>
-        <div class="card-body">
-          <p class="desc">عرض كورسات + تسجيل دخول + فيديوهات + اختبارات</p>
-          <ul class="features">
-            <li><span>عدد الصفحات:</span> +10</li>
-            <li><span>مدة التسليم:</span> 15 يوم</li>
-          </ul>
-          <div class="price">8000 – 12000 جنيها</div>
-          <a href="request.html" class="btn btn-primary order-btn">اطلب الآن</a>
-        </div>
-      </article>
+    <div class="package">
+      <h3>موقع تعليمي تفاعلي (Course Platform)</h3>
+      <p>عرض كورسات + تسجيل دخول + فيديوهات + اختبارات</p>
+      <p>عدد الصفحات: +10 | مدة التسليم: 15 يوم</p>
+      <p>السعر: 8000 – 12000 جنيها</p>
+      <a href="request.html" class="btn">اطلب الآن</a>
+    </div>
 
-    </section>
+    <div class="package">
+      <h3>متجر إلكتروني متقدم</h3>
+      <p>منتجات + سلة + دفع أونلاين + حسابات مستخدمين</p>
+      <p>عدد الصفحات: 10+ | مدة التسليم: 21 يوم</p>
+      <p>السعر: 10000 – 15000 جنيها</p>
+      <a href="request.html" class="btn">اطلب الآن</a>
+    </div>
+  </section>
 
-    <!-- الإضافات المدفوعة (تمت إضافتها بناءً على طلبك) -->
-    <section class="pricing-grid" id="paid-addons">
-        <h2 style="grid-column: 1 / -1; text-align: center; margin-top: 40px; margin-bottom: 20px;">الإضافات المدفوعة</h2>
+  <section id="addons">
+    <h2>الإضافات المدفوعة</h2>
+    <div class="package">
+      <h3>دعم وصيانة شهرية</h3>
+      <p>متابعة شهرية + إصلاح الأعطال + تحديثات أمنية</p>
+      <p>السعر: 800 – 1500 جنيها شهريًا</p>
+      <a href="request.html" class="btn">اطلب الآن</a>
+    </div>
+    <div class="package">
+      <h3>تصميم شعار وهوية بصرية</h3>
+      <p>لوجو احترافي + ألوان وهوية متكاملة</p>
+      <p>السعر: 800 – 1200 جنيها</p>
+      <a href="request.html" class="btn">اطلب الآن</a>
+    </div>
+    <div class="package">
+      <h3>ربط الموقع بـ Telegram/WhatsApp</h3>
+      <p>استقبال الطلبات مباشرة</p>
+      <p>السعر: 500 جنيها</p>
+      <a href="request.html" class="btn">اطلب الآن</a>
+    </div>
+    <div class="package">
+      <h3>تهيئة أساسية SEO</h3>
+      <p>تحسين أساسي لمحركات البحث</p>
+      <p>السعر: 1000 جنيها</p>
+      <a href="request.html" class="btn">اطلب الآن</a>
+    </div>
+    <div class="package">
+      <h3>تحسين شامل SEO</h3>
+      <p>تحسين شامل + كلمات مفتاحية متقدم</p>
+      <p>السعر: 2000 – 3000 جنيها</p>
+      <a href="request.html" class="btn">اطلب الآن</a>
+    </div>
+    <div class="package">
+      <h3>إنشاء حسابات للمستخدمين</h3>
+      <p>نظام تسجيل دخول وصلاحيات مختلفة</p>
+      <p>السعر: 2000 – 3500 جنيها</p>
+      <a href="request.html" class="btn">اطلب الآن</a>
+    </div>
+    <div class="package">
+      <h3>لوحة تحكم مخصصة</h3>
+      <p>إدارية لإدارة المحتوى والتحكم الكامل</p>
+      <p>السعر: 2500 – 4000 جنيها</p>
+      <a href="request.html" class="btn">اطلب الآن</a>
+    </div>
+    <div class="package">
+      <h3>عداد زيارات وتحليلات</h3>
+      <p>متابعة عدد الزوار + إحصائيات الأداء</p>
+      <p>السعر: 1500 جنيها</p>
+      <a href="request.html" class="btn">اطلب الآن</a>
+    </div>
+    <div class="package">
+      <h3>صف
 
-        <!-- تصميم شعار وهوية بصرية كاملة -->
-        <article class="card">
-            <header class="card-header">تصميم شعار وهوية بصرية كاملة</header>
-            <div class="card-body">
-                <p class="desc">لوجو احترافي + ألوان وهوية متكاملة</p>
-                <div class="price">800 – 1200 جنيها</div>
-                <a href="request.html" class="btn btn-primary order-btn">اطلب الآن</a>
-            </div>
-        </article>
-
-        <!-- ربط الموقع بـ Telegram/WhatsApp -->
-        <article class="card">
-            <header class="card-header">ربط الموقع بـ Telegram/WhatsApp</header>
-            <div class="card-body">
-                <p class="desc">استقبال الطلبات مباشرة على تليجرام أو واتساب</p>
-                <div class="price">500 جنيها</div>
-                <a href="request.html" class="btn btn-primary order-btn">اطلب الآن</a>
-            </div>
-        </article>
-
-        <!-- تهيئة الموقع لمحركات البحث -->
-        <article class="card">
-            <header class="card-header">تهيئة الموقع لمحركات البحث</header>
-            <div class="card-body">
-                <p class="desc">أساسي SEO</p>
-                <div class="price">1000 جنيها</div>
-                <a href="request.html" class="btn btn-primary order-btn">اطلب الآن</a>
-            </div>
-        </article>
-
-        <!-- تحسين شامل + كلمات مفتاحية متقدم SEO -->
-        <article class="card">
-            <header class="card-header">تحسين شامل + كلمات مفتاحية متقدم SEO</header>
-            <div class="card-body">
-                <p class="desc">تحسين شامل + كلمات مفتاحية متقدم SEO</p>
-                <div class="price">2000 – 3000 جنيها</div>
-                <a href="request.html" class="btn btn-primary order-btn">اطلب الآن</a>
-            </div>
-        </article>
-        
-        <!-- لوحة تحكم مخصصة -->
-        <article class="card">
-            <header class="card-header">لوحة تحكم مخصصة</header>
-            <div class="card-body">
-                <p class="desc">إدارية لإدارة المحتوى والتحكم الكامل بالموقع</p>
-                <div class="price">2500 – 4000 جنيها</div>
-                <a href="request.html" class="btn btn-primary order-btn">اطلب الآن</a>
-            </div>
-        </article>
-
-        <!-- إنشاء حسابات للمستخدمين مع نظام تسجيل دخول وصلاحيات -->
-        <article class="card">
-            <header class="card-header">إنشاء حسابات للمستخدمين</header>
-            <div class="card-body">
-                <p class="desc">نظام تسجيل دخول وصلاحيات مختلفة (أدمن، محرر، زائر)</p>
-                <div class="price">2000 – 3500 جنيها</div>
-                <a href="request.html" class="btn btn-primary order-btn">اطلب الآن</a>
-            </div>
-        </article>
-
-        <!-- عداد زيارات وتحليلات -->
-        <article class="card">
-            <header class="card-header">عداد زيارات وتحليلات</header>
-            <div class="card-body">
-                <p class="desc">متابعة عدد الزوار + إحصائيات تفصيلية عن الأداء</p>
-                <div class="price">1500 جنيها</div>
-                <a href="request.html" class="btn btn-primary order-btn">اطلب الآن</a>
-            </div>
-        </article>
-
-        <!-- صفحة تسويقية احترافية (Landing Page) -->
-        <article class="card">
-            <header class="card-header">صفحة تسويقية احترافية</header>
-            <div class="card-body">
-                <p class="desc">تصميم صفحة هبوط (Landing Page) لجذب العملاء وتحويلهم</p>
-                <div class="price">1200 – 2000 جنيها</div>
-                <a href="request.html" class="btn btn-primary order-btn">اطلب الآن</a>
-            </div>
-        </article>
-        
-        <!-- دعم وصيانة شهرية -->
-        <article class="card">
-            <header class="card-header">دعم وصيانة شهرية</header>
-            <div class="card-body">
-                <p class="desc">متابعة شهرية + إصلاح الأعطال + تحديثات أمنية</p>
-                <div class="price">800 – 1500 جنيها شهريًا</div>
-                <a href="request.html" class="btn btn-primary order-btn">اطلب الآن</a>
-            </div>
-        </article>
-
-    </section>
-
-  </main>
-  <script src="script.js"></script>
-</body>
-</html>
